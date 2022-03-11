@@ -1,0 +1,39 @@
+.drop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+}
+
+.open {
+  display: block;
+  animation: slidein 400ms forwards ease-in-out;
+}
+
+.close {
+  animation: slideout forwards 400s ease-in-out;
+}
+
+@keyframes slidein {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+@keyframes slideout {
+  from {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  to {
+    background-color: rgba(0, 0, 0, 0);
+    display: block;
+  }
+}

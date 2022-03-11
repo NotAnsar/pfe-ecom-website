@@ -1,0 +1,16 @@
+.h {
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 5rem;
+  // border-top: 1px solid #dee2e6;
+  background-color: var(--dark-bg-color);
+  color: var(--light-text-color);
+  @media screen and (max-width: 600px) {
+    font-size: 0.9rem;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 0.8rem;
+  }
+}
