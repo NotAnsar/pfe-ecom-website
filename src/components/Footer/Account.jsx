@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import classes from './Footer.module.scss';
 
@@ -22,8 +23,16 @@ const Account = ({ showAccount, setshowAccount, logo }) => {
       </div>
       {showAccount && (
         <ul>
-          <li>Login</li>
-          <li>Register</li>
+          <li>
+            <Link className={classes.link} to='/login'>
+              Login
+            </Link>
+          </li>
+          <li>
+            <Link className={classes.link} to='/register'>
+              Register
+            </Link>
+          </li>
         </ul>
       )}
     </div>

@@ -7,6 +7,13 @@
   width: 400px;
   background-color: white;
   z-index: 1000;
+  @media screen and (max-width: 500px) {
+    width: 300px;
+    right: -300px;
+    @media screen and (max-width: 300px) {
+      width: 100%;
+    }
+  }
 }
 
 svg {
@@ -94,26 +101,41 @@ svg {
       }
       h2 {
         font-weight: 500;
-        font-size: 1.2rem;
+        font-size: 1.05rem;
       }
       p {
         padding: 0.2rem 0;
         font-weight: 300;
         font-size: 0.9rem;
       }
+      @media screen and (max-width: 500px) {
+        h2 {
+          font-size: 0.9rem;
+        }
+        p {
+          font-size: 0.7rem;
+        }
+        grid-template-columns: 2fr 4fr;
+      }
       .qteContainer {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        margin-top: 0.5rem;
+
         h3 {
           font-size: 1rem;
           font-weight: 400;
+          @media screen and (max-width: 500px) {
+            font-size: 0.9rem;
+          }
         }
         .quantity {
           width: 100px;
           height: 30px;
           display: grid;
           grid-template-columns: 1fr 3fr 1fr;
+
           input {
             width: 100%;
             text-align: center;
@@ -132,6 +154,19 @@ svg {
           }
           span {
             border: 1px #dee2e6 solid;
+          }
+
+          @media screen and (max-width: 500px) {
+            width: 80px;
+            height: 25px;
+            span {
+              height: 25px;
+            }
+
+            input {
+              height: 27px;
+              font-size: 0.7rem;
+            }
           }
         }
       }
@@ -153,11 +188,12 @@ svg {
   a {
     background: rgb(0, 0, 0);
     color: white;
-    padding: 1rem 7.8rem;
+    padding: 1rem 0;
     font-size: 1rem;
     font-weight: 700;
     margin-top: 1rem;
-
+    display: block;
+    border-radius: 3px;
     &:hover {
       background: rgba(0, 0, 0, 0.8);
     }

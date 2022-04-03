@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
-export const Profile = () => {
-  return <h1>Profile</h1>;
+const Profile = () => {
+  const [LoggedIn, setLoggedIn] = useState(false);
+
+  return LoggedIn ? <div>Profile</div> : <Navigate to='/login' replace />;
 };
+
+export default Profile;

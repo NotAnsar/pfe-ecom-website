@@ -1,26 +1,43 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  isShowing: null,
+  cartIsShowing: null,
+  wishIsShowing: null,
 };
 
 export const wishListSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
-    show: (state) => {
-      state.isShowing = true;
+    showCart: (state) => {
+      state.cartIsShowing = true;
     },
-    hide: (state) => {
-      state.isShowing = false;
+    hideCart: (state) => {
+      state.cartIsShowing = false;
     },
-    toggle: (state) => {
-      state.isShowing = !state.isShowing;
+    toggleCart: (state) => {
+      state.cartIsShowing = !state.isShowing;
+    },
+    showWish: (state) => {
+      state.wishIsShowing = true;
+    },
+    hideWish: (state) => {
+      state.wishIsShowing = false;
+    },
+    toggleWish: (state) => {
+      state.wishIsShowing = !state.isShowing;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { show, hide, toggle } = wishListSlice.actions;
+export const {
+  showCart,
+  hideCart,
+  toggleCart,
+  showWish,
+  hideWish,
+  toggleWish,
+} = wishListSlice.actions;
 
 export default wishListSlice.reducer;

@@ -1,0 +1,79 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import classes from './Form.module.scss';
+
+const RegisterForm = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    fname: '',
+    lname: '',
+  });
+
+  const formHandler = (e) => {
+    e.preventDefault();
+    console.log('hi');
+  };
+  const handleChange = (e) => {
+    let value = e.target.value;
+    let name = e.target.name;
+
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  return (
+    <div className={classes.login}>
+      <div className={classes.container}>
+        <div className={classes.form}>
+          <form onSubmit={formHandler}>
+            <div className={classes.splitForm}>
+              <div>
+                <label htmlFor='fName'>First Name</label>
+                <input
+                  type='text'
+                  onChange={handleChange}
+                  name='fName'
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor='lName'>Last Name</label>
+                <input
+                  type='text'
+                  onChange={handleChange}
+                  name='lName'
+                  required
+                />
+              </div>
+            </div>
+            <label htmlFor='email'>Email</label>
+            <input type='text' onChange={handleChange} name='email' required />
+            <label htmlFor='password'>Password</label>
+            <input
+              type='password'
+              onChange={handleChange}
+              name='password'
+              minLength='6'
+              required
+            />
+            <label htmlFor='cpassword'>Confirm Password</label>
+            <input
+              type='password'
+              onChange={handleChange}
+              name='cpassword'
+              minLength='6'
+              required
+            />
+            <input type='Submit' placeholder='Login Now' />
+          </form>
+          <div className={classes.newUser}>
+            <Link to='/login'>Already have an account ?</Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RegisterForm;

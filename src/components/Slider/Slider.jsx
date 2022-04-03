@@ -1,4 +1,4 @@
-import Slide from '../../images/SlidePs5.png';
+import Slide from '../../../images/SlidePs5.png';
 import classes from './Slider.module.scss';
 
 export const Slider = () => {

@@ -8,7 +8,7 @@ const Section = ({ showSection, setshowSection, logo }) => {
   return (
     <div className={classes.section}>
       <div className={classes.header}>
-        <h5>Vnvsr Shop</h5>
+        <h5>E-Com Shop</h5>
         <div
           className={`${classes.arrow} ${
             showSection ? classes.arrowOpen : classes.arrowClose

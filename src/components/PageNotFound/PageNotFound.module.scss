@@ -1,0 +1,20 @@
+.container {
+  margin: 12rem auto 25rem auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  p {
+    font-weight: 400;
+    color: #555;
+    margin-bottom: 0.7rem;
+  }
+  a {
+    color: #000;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

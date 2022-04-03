@@ -24,11 +24,11 @@ const Contact = ({ showContact, setshowContact, logo }) => {
       {showContact && (
         <ul>
           <li>
-            <FiPhoneCall /> +212640449139
+            <FiPhoneCall /> +21261234567891
           </li>
           <li>
             <FiMail />
-            ansar.karrouach@icloud.com
+            e.commerce@ecom.com
           </li>
         </ul>
       )}

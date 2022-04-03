@@ -3,7 +3,7 @@ header {
   background-color: var(--bg-color);
   position: sticky;
   top: 0;
-
+  z-index: 10;
   border-bottom: #dee2e6 1px solid;
   .container {
     color: inherit;

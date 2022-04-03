@@ -1,0 +1,78 @@
+.trendingSection {
+  border-top: #dee2e6 1px solid;
+  padding: 3rem 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+  .itemContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    padding-bottom: 3rem;
+    @media screen and (max-width: 600px) {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+  }
+}
+
+.itm {
+  cursor: pointer;
+  margin: 2rem 0.25rem;
+  img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+  h4 {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+}
+
+.viewAll {
+  background: rgb(0, 0, 0);
+  color: white;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  display: inline-block;
+  border-radius: 2px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  &:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
+
+.shopAll {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.img {
+  display: inline-block;
+  position: relative;
+
+  height: 0;
+  padding-bottom: 100%;
+  width: 100%;
+}
