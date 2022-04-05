@@ -10,10 +10,6 @@ const Brand = ({ title, data }) => {
     new Array(data.length).fill(false)
   );
 
-  useEffect(() => {
-    console.log(isChecked);
-  }, [isChecked]);
-
   const handleOnChange = (position) => {
     const updatedCheckedState = isChecked.map((item, index) =>
       index === position ? !item : item
@@ -41,10 +37,10 @@ const Brand = ({ title, data }) => {
         <ul>
           {data.map((d, i) => (
             <li key={i} className={classes.brandItem}>
-              <p>{d}</p>
+              <p>{title === 'Brand' ? d.brand : d.categorie}</p>
               <input
                 type='checkbox'
-                value={d}
+                value={title === 'Brand' ? d.brand_id : d.categorie_id}
                 checked={isChecked[i]}
                 onChange={() => handleOnChange(i)}
               />

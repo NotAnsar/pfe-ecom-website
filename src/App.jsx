@@ -12,14 +12,15 @@ import Register from './pages/Register';
 import Profile from './pages/Profile';
 import { WishList } from './components/Wishlist/WishList';
 import { useEffect } from 'react';
-import { fetchProductData } from './store/productsSlice';
+import { fetchData } from './store/productsSlice';
 import { useDispatch } from 'react-redux';
+import Product from './pages/Product';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProductData('./json/products.json'));
+    dispatch(fetchData());
   }, []);
 
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/product/:id' element={<Product />} />
         <Route path='*' element={<Error />} />
       </Routes>
       <Footer />

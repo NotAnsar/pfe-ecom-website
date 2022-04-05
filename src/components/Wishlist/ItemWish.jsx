@@ -7,7 +7,7 @@ const Item = ({ id, image, name, price }) => {
   return (
     <div className={classes.itemContainer}>
       <div className={classes.item}>
-        <img src={`./images/${image}`} alt={name} />
+        <img src={`../images/${image}`} alt={name} />
         <div>
           <h2>{name}</h2>
           <span className={classes.flex}>

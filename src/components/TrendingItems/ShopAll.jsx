@@ -29,36 +29,6 @@ const ShopAll = () => {
               price={p.price}
             />
           ))}
-          {/* <ShoppingItem
-            img='https://i.ibb.co/3S443KC/13.png'
-            title='Off The Pier Double-Sided Tee'
-            price='26.99'
-          />
-          <ShoppingItem
-            img='https://i.ibb.co/3S443KC/13.png'
-            title='Off The Pier Double-Sided Tee'
-            price='26.99'
-          />
-          <ShoppingItem
-            img='https://i.ibb.co/3S443KC/13.png'
-            title='Off The Pier Double-Sided Tee'
-            price='26.99'
-          />
-          <ShoppingItem
-            img='https://i.ibb.co/3S443KC/13.png'
-            title='Off The Pier Double-Sided Tee'
-            price='26.99'
-          />
-          <ShoppingItem
-            img='https://i.ibb.co/3S443KC/13.png'
-            title='Off The Pier Double-Sided Tee'
-            price='26.99'
-          />
-          <ShoppingItem
-            img='https://i.ibb.co/3S443KC/13.png'
-            title='Off The Pier Double-Sided Tee'
-            price='26.99'
-          /> */}
         </div>
       </div>
     </div>

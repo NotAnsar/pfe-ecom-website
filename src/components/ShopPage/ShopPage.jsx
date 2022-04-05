@@ -8,14 +8,16 @@ import ShopHeader from './ShopHeader';
 import Filter from './Filter';
 
 const ShopAll = () => {
-  const products = useSelector((state) => state.products.products);
+  const { products, brands, categories } = useSelector(
+    (state) => state.products
+  );
 
   return (
     <div className={classes.trendingSection}>
       <div className={classes.container}>
         <ShopHeader />
         <div className={classes.shopContainer}>
-          <Filter />
+          <Filter brands={brands} categories={categories} />
           <div className={classes.itemContainer}>
             {products.map((p) => (
               <ShopItem

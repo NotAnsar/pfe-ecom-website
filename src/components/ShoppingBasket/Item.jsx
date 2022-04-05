@@ -7,10 +7,14 @@ const Item = ({ id, image, name, price, qte }) => {
   return (
     <div className={classes.itemContainer}>
       <div className={classes.item}>
-        <img src={`./images/${image}`} alt={name} />
+        <img src={`../images/${image}`} alt={name} />
+        {/* <img
+          src={`http://${window.location.host}/images/${image}`}
+          alt={name}
+        /> */}
         <div>
           <h2>{name}</h2>
-          {/* <p>{details}</p> */}
+
           <div className={classes.qteContainer}>
             <div className={classes.quantity}>
               <span
