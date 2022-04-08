@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { showCart, showWish } from '../../store/wishListSlice';
 import classes from './Header.module.scss';
@@ -8,6 +8,7 @@ import { FiAlignRight, FiHeart, FiShoppingCart, FiUser } from 'react-icons/fi';
 
 export const Header = () => {
   const dispatch = useDispatch();
+  const { wish, cart } = useSelector((state) => state.storageSlice);
 
   return (
     <header>
@@ -27,10 +28,20 @@ export const Header = () => {
         </div>
         <ul>
           <li onClick={() => dispatch(showCart())}>
-            <FiShoppingCart />
+            <div className={classes.heartContainer}>
+              {cart.length > 0 && (
+                <span className={classes.notification}>{cart.length} </span>
+              )}
+              <FiShoppingCart />
+            </div>
           </li>
           <li onClick={() => dispatch(showWish())}>
-            <FiHeart />
+            <div className={classes.heartContainer}>
+              <FiHeart />
+              {wish.length > 0 && (
+                <span className={classes.notification}>{wish.length} </span>
+              )}
+            </div>
           </li>
           <li className={classes.laptopOnly}>
             <Link to='/Profile'>

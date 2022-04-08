@@ -12,7 +12,7 @@ const ShoppingItem = ({ image, name, price, id }) => {
         </div>
         <div>
           <h2>{name}</h2>
-          <h4>${price}</h4>
+          <h4>${price.toFixed(2)}</h4>
         </div>
       </div>
     </Link>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import ShopItem from '../TrendingItems/ShoppingItem';
 
@@ -12,12 +12,24 @@ const ShopAll = () => {
     (state) => state.products
   );
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
+
   return (
     <div className={classes.trendingSection}>
       <div className={classes.container}>
         <ShopHeader />
         <div className={classes.shopContainer}>
           <Filter brands={brands} categories={categories} />
+          {(!products || brands.length === 0 || categories.length === 0) && (
+            <div className='loading'>
+              <img src='./images/loading.gif' />
+            </div>
+          )}
           <div className={classes.itemContainer}>
             {products.map((p) => (
               <ShopItem

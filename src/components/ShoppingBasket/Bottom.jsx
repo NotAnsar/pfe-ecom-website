@@ -2,19 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classes from './ShoppingBasket.module.scss';
 
-const Bottom = ({ total, cart }) => {
+const Bottom = ({ total }) => {
   return (
-    cart.length !== 0 && (
-      <div className={classes.bottom}>
-        <div>
-          <h3>Total</h3>
-          <h3>{total}</h3>
-        </div>
-        <Link to='/checkout' href='#0' className='button'>
-          Check out
-        </Link>
+    <div className={classes.bottom}>
+      <div>
+        <h3>Total</h3>
+        <h3 className={classes.total}>${total.toFixed(2)}</h3>
       </div>
-    )
+      <Link to='/checkout' href='#0' className='button'>
+        Check out
+      </Link>
+    </div>
   );
 };
 

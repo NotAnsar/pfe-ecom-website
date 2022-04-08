@@ -11,17 +11,24 @@ const TrendingItems = () => {
     <div className={classes.trendingSection}>
       <div className={classes.container}>
         <h1>Trending Items</h1>
-        <div className={classes.itemContainer}>
-          {trendingItems.map((p) => (
-            <ShoppingItem
-              key={p.product_id}
-              id={p.product_id}
-              image={p.image}
-              name={p.name}
-              price={p.price}
-            />
-          ))}
-        </div>
+        {trendingItems.length === 0 && (
+          <div className='loading' style={{ height: '400px' }}>
+            <img src='./images/loading.gif' />
+          </div>
+        )}
+        {trendingItems && (
+          <div className={classes.itemContainer}>
+            {trendingItems.map((p) => (
+              <ShoppingItem
+                key={p.product_id}
+                id={p.product_id}
+                image={p.image}
+                name={p.name}
+                price={p.price}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

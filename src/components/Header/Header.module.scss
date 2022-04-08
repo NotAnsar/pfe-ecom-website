@@ -39,8 +39,8 @@ header {
     justify-content: center;
     margin: 0 0.75rem;
     svg {
-      height: 1.25rem;
-      width: 1.25rem;
+      height: 1.3rem;
+      width: 1.3rem;
     }
   }
 
@@ -65,4 +65,29 @@ header {
   a {
     font-size: 0.95rem;
   }
+}
+
+.heartContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.notification {
+  width: 0.9rem;
+  height: 0.9rem;
+  background-color: #ff4f33;
+  background-color: #ff0000;
+
+  border-radius: 50%;
+  position: absolute;
+  font-size: 12px;
+  font-weight: 400;
+  color: #fff;
+  top: -6px;
+  right: -8px;
+  border: #fff 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

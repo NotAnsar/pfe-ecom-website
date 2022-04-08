@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from './ShoppingBasket.module.scss';
 
 import Item from './Item';
@@ -16,7 +16,9 @@ const Middle = ({ cart }) => {
             image={p.image}
             name={p.name}
             price={p.price}
-            qte='2'
+            qte={p.qte}
+            brand={p.brand}
+            categorie={p.categorie}
           />
         ))
       )}

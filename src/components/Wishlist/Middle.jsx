@@ -4,14 +4,14 @@ import classes from './WishList.module.scss';
 import ItemWish from './ItemWish';
 import { useSelector } from 'react-redux';
 const Middle = () => {
-  const wishItem = useSelector((state) => state.products.trendingItems);
+  const wish = useSelector((state) => state.storageSlice.wish);
 
   return (
     <div className={classes.middle}>
-      {wishItem.length === 0 ? (
+      {wish.length === 0 ? (
         <p className={classes.empty}>Your WishList is currently empty.</p>
       ) : (
-        wishItem.map((p) => (
+        wish.map((p) => (
           <ItemWish
             key={p.product_id}
             id={p.product_id}

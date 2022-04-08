@@ -36,6 +36,9 @@ svg {
   height: 100%;
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 500px) {
+    padding: 0 1.2rem;
+  }
 }
 
 .open {
@@ -81,8 +84,8 @@ svg {
   overflow-x: hidden;
   height: 100%;
   .itemContainer {
-    padding-top: 2rem;
-    padding-bottom: 1.5rem;
+    padding-top: 1.9rem;
+    padding-bottom: 1.4rem;
     border-top: 1px solid #dee2e6;
     width: 100%;
 
@@ -175,13 +178,13 @@ svg {
 }
 
 .bottom {
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   border-top: 1px solid #dee2e6;
   div {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     margin-top: 1rem;
   }
   text-align: center;
@@ -203,4 +206,8 @@ svg {
 .empty {
   padding-top: 2rem;
   border-top: 1px solid #dee2e6;
+}
+
+.total {
+  font-weight: 400;
 }

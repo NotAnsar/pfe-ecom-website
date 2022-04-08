@@ -6,7 +6,10 @@ import ProductPage from '../components/ProductPage/ProductPage';
 const Product = () => {
   const { id } = useParams();
   const products = useSelector((state) => state.products.products);
-  const data = products.find((d) => d.product_id === +id);
+  let data = null;
+  if (products.length !== 0) {
+    data = products?.find((d) => d.product_id === +id);
+  }
 
   return <ProductPage data={data} />;
 };
