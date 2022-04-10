@@ -29,18 +29,14 @@ export const Header = () => {
         <ul>
           <li onClick={() => dispatch(showCart())}>
             <div className={classes.heartContainer}>
-              {cart.length > 0 && (
-                <span className={classes.notification}>{cart.length} </span>
-              )}
+              {cart.length > 0 && <span className={classes.notification} />}
               <FiShoppingCart />
             </div>
           </li>
           <li onClick={() => dispatch(showWish())}>
             <div className={classes.heartContainer}>
               <FiHeart />
-              {wish.length > 0 && (
-                <span className={classes.notification}>{wish.length} </span>
-              )}
+              {wish.length > 0 && <span className={classes.notification} />}
             </div>
           </li>
           <li className={classes.laptopOnly}>
