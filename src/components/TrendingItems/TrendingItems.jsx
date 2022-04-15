@@ -10,7 +10,9 @@ const TrendingItems = () => {
   return (
     <div className={classes.trendingSection}>
       <div className={classes.container}>
-        <h1>Trending Items</h1>
+        <div className={classes.shopAll}>
+          <h1>Trending Items</h1>
+        </div>
         {trendingItems.length === 0 && (
           <div className='loading' style={{ height: '400px' }}>
             <img src='./images/loading.gif' />
