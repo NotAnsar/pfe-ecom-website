@@ -9,13 +9,6 @@ const ShoppingItem = ({ image, name, price, id }) => {
       <div className={classes.rowgrid}>
         <div className={classes.img}>
           <img src={`./images/${image}`} alt={name} />
-          <img src={`./../images/${image}`} alt={name} />
-          <img src={`./../../images/${image}`} alt={name} />
-          <img src={`../../../images/${image}`} alt={name} />
-          <img src={`../../../images/img1.png`} alt={name} />
-          <img src={`../../images/img1.png`} alt={name} />
-          <img src={`../images/img1.png`} alt={name} />
-          <img src={`./images/img1.png`} alt={name} />
         </div>
         <div>
           <h2>{name}</h2>
