@@ -6,6 +6,7 @@ import { Home } from './pages/Home';
 import { Shop } from './pages/Shop';
 import { Error } from './pages/Error';
 import { ShoppingBasket } from './components/ShoppingBasket/ShoppingBasket';
+import { Menu } from './components/ShoppingBasket/Menu';
 import Footer from './components/Footer/Footer';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -28,6 +29,7 @@ function App() {
       <Header />
       <ShoppingBasket />
       <WishList />
+      <Menu />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/shop' element={<Shop />} />

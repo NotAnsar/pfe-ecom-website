@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   cartIsShowing: null,
   wishIsShowing: null,
+  menuIsShowing: null,
 };
 
 export const wishListSlice = createSlice({
@@ -17,6 +18,15 @@ export const wishListSlice = createSlice({
     },
     toggleCart: (state) => {
       state.cartIsShowing = !state.isShowing;
+    },
+    showMenu: (state) => {
+      state.menuIsShowing = true;
+    },
+    hideMenu: (state) => {
+      state.menuIsShowing = false;
+    },
+    toggleMenu: (state) => {
+      state.menuIsShowing = !state.isShowing;
     },
     showWish: (state) => {
       state.wishIsShowing = true;
@@ -38,6 +48,9 @@ export const {
   showWish,
   hideWish,
   toggleWish,
+  showMenu,
+  hideMenu,
+  toggleMenu,
 } = wishListSlice.actions;
 
 export default wishListSlice.reducer;

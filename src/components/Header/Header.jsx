@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { showCart, showWish } from '../../store/wishListSlice';
+import { showCart, showMenu, showWish } from '../../store/wishListSlice';
 import classes from './Header.module.scss';
 
 import { FiAlignRight, FiHeart, FiShoppingCart, FiUser } from 'react-icons/fi';
@@ -44,7 +44,10 @@ export const Header = () => {
               <FiUser />
             </Link>
           </li>
-          <li className={classes.mobileOnly}>
+          <li
+            className={classes.mobileOnly}
+            onClick={() => dispatch(showMenu())}
+          >
             <FiAlignRight />
           </li>
         </ul>

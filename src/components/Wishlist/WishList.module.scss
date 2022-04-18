@@ -70,9 +70,19 @@ svg {
 }
 
 .top {
-  h1 {
-    font-size: 1.5rem;
+  svg {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    height: 1.25rem;
+    width: 1.25rem;
   }
+  h1 {
+    font-size: 1.35rem;
+    font-weight: 600;
+  }
+
   padding: 1.7rem 0;
   display: flex;
   align-items: center;
