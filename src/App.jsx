@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { Fragment } from 'react/cjs/react.production.min';
 import { Header } from './components/Header/Header';
-import { Chekout } from './pages/Chekout';
+import { CheckOut } from './pages/CheckOut';
 import { Home } from './pages/Home';
 import { Shop } from './pages/Shop';
 import { Error } from './pages/Error';
@@ -33,7 +33,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/shop' element={<Shop />} />
-        <Route path='/checkout' element={<Chekout />} />
+        <Route path='/checkout' element={<CheckOut />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />

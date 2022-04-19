@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
+import Checkout from '../components/Checkout/Checkout';
 
-export const Chekout = () => {
+export const CheckOut = () => {
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
   }, []);
-  return <h1>Chekout</h1>;
+
+  return <Checkout />;
 };

@@ -1,0 +1,37 @@
+.container {
+  max-width: 1200px;
+  margin: 2.5rem auto;
+  padding: 0 1rem;
+}
+
+.stepContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #b4b4b4;
+  font-weight: 500;
+  padding-bottom: 1.5rem;
+  .selected {
+    color: #000;
+  }
+  .steptwo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  border-bottom: 1px solid #ededed;
+  svg {
+    stroke-width: 1.4;
+    width: 1rem;
+    height: 1rem;
+    transform: rotate(90deg);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 1rem;
+  padding: 2rem 0;
+}

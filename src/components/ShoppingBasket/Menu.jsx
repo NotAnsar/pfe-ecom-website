@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 export const Menu = () => {
   const dispatch = useDispatch();
   const showMenu = useSelector((state) => state.wishCard.menuIsShowing);
-  console.log(showMenu);
   const menuClasses = `${classes.card} ${
     showMenu === null ? '' : showMenu ? classes.open : classes.close
   }`;

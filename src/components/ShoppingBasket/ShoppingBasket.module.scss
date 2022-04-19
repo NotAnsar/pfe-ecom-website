@@ -36,8 +36,9 @@ svg {
   height: 100%;
   display: flex;
   flex-direction: column;
+
   @media screen and (max-width: 500px) {
-    padding: 0 1.2rem;
+    padding: 0 1rem;
   }
 }
 
@@ -82,7 +83,8 @@ svg {
     font-size: 1.35rem;
     font-weight: 600;
   }
-  padding: 1.7rem 0;
+  padding: 1.7rem 0.3rem;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
