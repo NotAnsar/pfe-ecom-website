@@ -11,6 +11,9 @@
   color: #b4b4b4;
   font-weight: 500;
   padding-bottom: 1.5rem;
+  @media screen and (max-width: 350px) {
+    font-size: 0.9rem;
+  }
   .selected {
     color: #000;
   }
@@ -32,6 +35,9 @@
 .grid {
   display: grid;
   grid-template-columns: 3fr 2fr;
+  @media screen and (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
   gap: 1rem;
   padding: 2rem 0;
 }

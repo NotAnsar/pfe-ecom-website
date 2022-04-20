@@ -23,49 +23,60 @@
     margin-bottom: 0.75rem;
     letter-spacing: 1px;
   }
-  input {
-    box-sizing: border-box;
-    border: 1px solid #dae1e7;
-    border-radius: 5px 0 0 5px;
-    color: var(--title-font-color);
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    font-family: inherit;
-    height: 40px;
-    outline: none;
-    padding: 8px 12px;
-    transition: all 0.3s;
-    width: 400px;
-    @media screen and (max-width: 600px) {
-      max-width: 250px;
-      @media screen and (max-width: 420px) {
-        width: 100%;
-        border-radius: 5px;
+  .inputContainer {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+
+    @media screen and (max-width: 420px) {
+      display: block;
+    }
+    input {
+      box-sizing: border-box;
+      border: 1px solid #dae1e7;
+      border-radius: 5px 0 0 5px;
+      color: var(--title-font-color);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      font-family: inherit;
+      height: 40px;
+      outline: none;
+      padding: 8px 12px;
+      transition: all 0.3s;
+      width: 400px;
+      @media screen and (max-width: 600px) {
+        max-width: 250px;
+        @media screen and (max-width: 420px) {
+          width: 100%;
+          border-radius: 5px;
+        }
+      }
+      &:focus {
+        border: 1px solid #000;
+        box-shadow: 0 0 0 3px rgb(0 0 0 / 25%);
       }
     }
-    &:focus {
-      border: 1px solid #000;
-      box-shadow: 0 0 0 3px rgb(0 0 0 / 25%);
-    }
-  }
 
-  input[type='submit'] {
-    width: 120px;
-    background-color: #000;
-    color: #fff;
-    font-weight: 400;
-    height: 40px;
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-    cursor: pointer;
-    border-radius: 0 5px 5px 0;
-    @media screen and (max-width: 420px) {
-      width: 100%;
-      margin-top: 0.7rem;
-      border-radius: 5px;
-    }
-    &:hover {
-      opacity: 0.85;
+    input[type='submit'] {
+      width: 120px;
+      background-color: #000;
+      color: #fff;
+      font-weight: 400;
+      height: 40px;
+      // margin-top: 1.5rem;
+      // margin-bottom: 0.5rem;
+      cursor: pointer;
+      border-radius: 0 5px 5px 0;
+      @media screen and (max-width: 420px) {
+        width: 100%;
+        margin-top: 0.7rem;
+        border-radius: 5px;
+      }
+      &:hover {
+        opacity: 0.85;
+      }
     }
   }
 }

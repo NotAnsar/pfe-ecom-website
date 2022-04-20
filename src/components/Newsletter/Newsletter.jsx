@@ -9,7 +9,7 @@ const Newsletter = () => {
         <FiSend />
         <h3>Subscribe To Our Newsletter</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
-        <div>
+        <div className={classes.inputContainer}>
           <input type='email' placeholder='Enter a valid email adresse' />
           <input type='submit' />
         </div>
