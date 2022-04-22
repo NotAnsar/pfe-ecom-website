@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { setCheckoutDone } from '../../store/wishListSlice';
 
 import classes from './Form.module.scss';
 
 const CheckoutForm = () => {
+  const { cart, total } = useSelector((state) => state.storageSlice);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     email: '',
     fName: '',
@@ -29,8 +36,24 @@ const CheckoutForm = () => {
       alert('Fill Out All The Fields');
       return;
     }
-
-    console.log(formData);
+    dispatch(setCheckoutDone());
+    const adresse = {
+      phone: formData.phone,
+      country: formData.country,
+      adresse: formData.adresse,
+      city: formData.city,
+      zcode: formData.zcode,
+    };
+    const user = {
+      email: formData.email,
+      fName: formData.fName,
+      lName: formData.lName,
+      adresse,
+      at: new Date().toISOString(),
+      bought: cart,
+      total,
+    };
+    navigate('/payement', { state: user });
   };
 
   const handleChange = (e) => {
@@ -116,7 +139,6 @@ const CheckoutForm = () => {
               disabled
               required
             />
-            {/* <input type='Submit' /> */}
           </form>
         </div>
       </div>

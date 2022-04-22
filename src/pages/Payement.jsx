@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Checkout from '../components/Checkout/Checkout';
 
-export const CheckOut = () => {
+export const Payement = () => {
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -9,5 +9,5 @@ export const CheckOut = () => {
     });
   }, []);
 
-  return <Checkout type='checkout' />;
+  return <Checkout type='payement' />;
 };

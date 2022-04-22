@@ -4,7 +4,8 @@ import classes from './Summary.module.scss';
 
 import Itm from './Itm';
 import { useSelector } from 'react-redux';
-const Summary = () => {
+import { Link } from 'react-router-dom';
+const Summary = ({ type }) => {
   const { cart, total } = useSelector((state) => state.storageSlice);
 
   return (
@@ -32,7 +33,11 @@ const Summary = () => {
         <p>${total.toFixed(2)}</p>
       </div>
       <div className={classes.btn}>
-        <input type='Submit' form='checkoutForm' defaultValue='CONTINUE' />
+        {type === 'checkout' ? (
+          <input type='Submit' form='checkoutForm' defaultValue='CONTINUE' />
+        ) : (
+          <input type='Submit' defaultValue='Pay' form='payementForm' />
+        )}
       </div>
     </Fragment>
   );

@@ -27,6 +27,12 @@ export const cartStorageSlice = createSlice({
   name: 'cart&wish',
   initialState,
   reducers: {
+    reset: (state) => {
+      localStorage.clear();
+      state.wish = getItem('wish');
+      state.cart = getItem('cart');
+      state.total = 0;
+    },
     addWish: (state, action) => {
       const check = state.wish.find(
         (w) => w.product_id === action.payload.product_id
@@ -117,6 +123,7 @@ export const {
   removeItem,
   addItem,
   calculateTotal,
+  reset,
 } = cartStorageSlice.actions;
 
 export default cartStorageSlice.reducer;

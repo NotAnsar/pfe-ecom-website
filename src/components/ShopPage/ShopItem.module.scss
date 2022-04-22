@@ -112,6 +112,9 @@
     }
     .brand {
       margin-top: 1rem;
+      input {
+        width: auto;
+      }
       .brandTitle {
         padding: 0.5rem 0.25rem;
         display: flex;

@@ -4,12 +4,19 @@ const initialState = {
   cartIsShowing: null,
   wishIsShowing: null,
   menuIsShowing: null,
+  checkoutDone: false,
 };
 
 export const wishListSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
+    setCheckoutDone: (state) => {
+      state.checkoutDone = true;
+    },
+    unDoneCheckout: (state) => {
+      state.checkoutDone = false;
+    },
     showCart: (state) => {
       state.cartIsShowing = true;
     },
@@ -51,6 +58,8 @@ export const {
   showMenu,
   hideMenu,
   toggleMenu,
+  setCheckoutDone,
+  unDoneCheckout,
 } = wishListSlice.actions;
 
 export default wishListSlice.reducer;

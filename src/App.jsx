@@ -14,11 +14,14 @@ import Profile from './pages/Profile';
 import { WishList } from './components/Wishlist/WishList';
 import { useEffect } from 'react';
 import { fetchData } from './store/productsSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Product from './pages/Product';
+import { Payement } from './pages/Payement';
 
 function App() {
   const dispatch = useDispatch();
+  const { cart } = useSelector((state) => state.storageSlice);
+  const { checkoutDone } = useSelector((state) => state.wishCard);
 
   useEffect(() => {
     dispatch(fetchData());
@@ -33,7 +36,10 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/shop' element={<Shop />} />
-        <Route path='/checkout' element={<CheckOut />} />
+        {cart.length > 0 && <Route path='/checkout' element={<CheckOut />} />}
+        {cart.length > 0 && checkoutDone && (
+          <Route path='/payement' element={<Payement />} />
+        )}
         <Route path='/profile' element={<Profile />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />

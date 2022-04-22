@@ -6,52 +6,26 @@ import CheckoutForm from './CheckoutForm';
 import PayementForm from './PayementForm';
 import Summary from './Summary';
 
-const Checkout = () => {
-  /* const [checkFormData, setCheckFormData] = useState({
-    email: '',
-    fName: '',
-    lName: '',
-    phone: '',
-    country: 'morocco',
-    adresse: '',
-    city: '',
-    zcode: '',
-  });
-
-  const CheckoutFormHandler = (e) => {
-    e.preventDefault();
-    if (
-      formData.email.trim() === '' ||
-      formData.fName.trim() === '' ||
-      formData.lName.trim() === '' ||
-      formData.phone.trim() === '' ||
-      formData.country.trim() === '' ||
-      formData.adresse.trim() === '' ||
-      formData.city.trim() === '' ||
-      formData.zcode.trim() === ''
-    ) {
-      alert('Fill Out All The Fields');
-      return;
-    }
-
-    console.log(formData);
-  }; */
+const Checkout = ({ type }) => {
   return (
     <div className={classes.container}>
       <div className={classes.stepContainer}>
-        <span className={classes.selected}>1. Your Information</span>
-        <div className={`${classes.steptwo} ` /*   */}>
+        <span className={`${type === 'checkout' && classes.selected}`}>
+          1. Your Information
+        </span>
+        <div
+          className={`${classes.steptwo} ${
+            type !== 'checkout' && classes.selected
+          }`}
+        >
           <IoIosArrowUp />
           <span>2. Payement</span>
         </div>
       </div>
       <div className={classes.grid}>
+        {type === 'checkout' ? <CheckoutForm /> : <PayementForm />}
         <div>
-          <CheckoutForm />
-          {/* <PayementForm /> */}
-        </div>
-        <div>
-          <Summary />
+          <Summary type={type} />
         </div>
       </div>
     </div>
