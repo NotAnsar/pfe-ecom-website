@@ -19,36 +19,36 @@ import Product from './pages/Product';
 import { Payement } from './pages/Payement';
 
 function App() {
-  const dispatch = useDispatch();
-  const { cart } = useSelector((state) => state.storageSlice);
-  const { checkoutDone } = useSelector((state) => state.wishCard);
+	const dispatch = useDispatch();
+	const { cart } = useSelector((state) => state.storageSlice);
+	const { checkoutDone } = useSelector((state) => state.wishCard);
 
-  useEffect(() => {
-    dispatch(fetchData());
-  }, []);
+	useEffect(() => {
+		dispatch(fetchData());
+	}, []);
 
-  return (
-    <Fragment>
-      <Header />
-      <ShoppingBasket />
-      <WishList />
-      <Menu />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/shop' element={<Shop />} />
-        {cart.length > 0 && <Route path='/checkout' element={<CheckOut />} />}
-        {cart.length > 0 && checkoutDone && (
-          <Route path='/payement' element={<Payement />} />
-        )}
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/product/:id' element={<Product />} />
-        <Route path='*' element={<Error />} />
-      </Routes>
-      <Footer />
-    </Fragment>
-  );
+	return (
+		<Fragment>
+			<Header />
+			<ShoppingBasket />
+			<WishList />
+			<Menu />
+			<Routes>
+				<Route path='/' element={<Home />} />
+				<Route path='/shop' element={<Shop />} />
+				{cart.length > 0 && <Route path='/checkout' element={<CheckOut />} />}
+				{cart.length > 0 && checkoutDone && (
+					<Route path='/payement' element={<Payement />} />
+				)}
+				<Route path='/profile' element={<Profile />} />
+				<Route path='/login' element={<Login />} />
+				<Route path='/register' element={<Register />} />
+				<Route path='/product/:id' element={<Product />} />
+				<Route path='*' element={<Error />} />
+			</Routes>
+			<Footer />
+		</Fragment>
+	);
 }
 
 export default App;
