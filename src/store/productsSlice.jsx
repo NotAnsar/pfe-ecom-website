@@ -1,18 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const url = 'http://127.0.0.1:8000/api';
 export const fetchData = () => {
 	return async (dispatch) => {
 		async function fetchData() {
 			const [resProduct, resBrand, resCategorie] = await Promise.all([
-				fetch(
-					`https://pfe-20529-default-rtdb.europe-west1.firebasedatabase.app/product.json`
-				),
-				fetch(
-					`https://pfe-20529-default-rtdb.europe-west1.firebasedatabase.app/brand.json`
-				),
-				fetch(
-					`https://pfe-20529-default-rtdb.europe-west1.firebasedatabase.app/categorie.json`
-				),
+				fetch(`${url}/products`),
+				fetch(`${url}/brands`),
+				fetch(`${url}/categories`),
 			]);
 
 			if (!resProduct.ok) throw Error('Could not fetch Product data');

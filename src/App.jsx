@@ -17,6 +17,7 @@ import { fetchData } from './store/productsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import Product from './pages/Product';
 import { Payement } from './pages/Payement';
+import Dashboard from './pages/Dashboard';
 
 function App() {
 	const dispatch = useDispatch();
@@ -25,6 +26,20 @@ function App() {
 
 	useEffect(() => {
 		dispatch(fetchData());
+		// const insertProduct = () => {
+		// 	products.forEach(async (element) => {
+		// 		const el = JSON.stringify(element);
+		// 		const data = await fetch(url, {
+		// 			method: 'POST',
+		// 			headers: {
+		// 				Accept: 'application/json',
+		// 				'Content-Type': 'application/json',
+		// 			},
+		// 			body: el,
+		// 		});
+		// 	});
+		// };
+		//
 	}, []);
 
 	return (
@@ -40,7 +55,9 @@ function App() {
 				{cart.length > 0 && checkoutDone && (
 					<Route path='/payement' element={<Payement />} />
 				)}
-				<Route path='/profile' element={<Profile />} />
+				<Route path='/profile/*' element={<Profile />} />
+
+				<Route path='/dashboard/*' element={<Dashboard />} />
 				<Route path='/login' element={<Login />} />
 				<Route path='/register' element={<Register />} />
 				<Route path='/product/:id' element={<Product />} />

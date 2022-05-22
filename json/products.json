@@ -1,162 +1,162 @@
 [
-  {
-    "product_id": 1,
-    "name": "iPhone 13 Pro Max 128Gb Alpine Green",
-    "price": 1099.95,
-    "description": "iPhone 13 Pro Max. The biggest Pro camera system upgrade ever. Super Retina XDR display with ProMotion for a faster, more responsive feel. Lightning-fast A15 Bionic chip. Superfast 5G. Durable design and the best battery life ever in an iPhone.",
-    "stock": 100,
-    "image": "img1.png",
-    "brand_id": 1,
-    "categorie_id": 1
-  },
-  {
-    "product_id": 2,
-    "name": "iPhone SE 5G 64GB Midnight (black)",
-    "price": 399.95,
-    "description": "iPhone SE 5G 64GB . Lightning-fast A15 Bionic chip and fast 5G. Big-time battery life and a superstar camera. Plus, the toughest glass in a smartphone and a Home button with secure Touch ID. ",
-    "stock": 100,
-    "image": "img2.png",
-    "brand_id": 1,
-    "categorie_id": 1
-  },
-  {
-    "product_id": 3,
-    "name": "iPhone 13 256Gb Midnight (black)",
-    "price": 899.95,
-    "description": "iPhone 13. The most advanced dual-camera system ever on iPhone. Lightning-fast A15 Bionic chip. A big leap in battery life. Durable design. Superfast 5G. And a brighter Super Retina XDR display.",
-    "stock": 100,
-    "image": "img3.png",
-    "brand_id": 1,
-    "categorie_id": 1
-  },
-  {
-    "product_id": 4,
-    "name": "Samsung Galaxy S22 Ultra 128GB",
-    "price": 1199.95,
-    "description": "The Samsung Galaxy S22 Ultra offers the ultimate epic standard of smartphone experiences bringing back the best of Galaxy Note to the S22 line with an embedded SPen enabling new ways to work and create on the go. The quad cameras let you capture premium detail with the ultra-clear 108MP main lens, the highest resolution available on a smartphone. Shoot videos that rival how epic your life is with stunning 8K recording. Your favorite content will look even better on the amazingly bright 6.8” WQHD+ Dynamic AMOLED 2X display with adaptive 120Hz refresh rate. The Galaxy S22 Ultra’s long lasting 5000 mAh intelligent battery powers your day and then some. Do more of what you love, with the incredibly fast 4nm processor, all on the nation’s largest, fastest, and most reliable nationwide 5G network.",
-    "stock": 100,
-    "image": "img4.png",
-    "brand_id": 2,
-    "categorie_id": 1
-  },
-  {
-    "product_id": 5,
-    "name": "Google Pixel 6 Stormy Black 128GB  ",
-    "price": 599.95,
-    "description": "Meet Pixel 6. It's completely reimagined, inside and out. Powered by Tensor, Google's first-ever processor, it's fast, smart, and secure. The all-day battery adapts to you. The Pixel Camera captures a moment just how you experienced it. And the Personal Safety app and the new Titan M2TM chip help protect you, your stuff, and your privacy.    ",
-    "stock": 100,
-    "image": "img5.png",
-    "brand_id": 4,
-    "categorie_id": 1
-  },
-  {
-    "product_id": 6,
-    "name": "Samsung Galaxy Z Flip3 5G 256GB Cream ",
-    "price": 654.0,
-    "description": "Set the trend your way with the stylish and compact Galaxy Z Flip3 5G. It's interactive cover screen allows you to view and reply to notifications, browse various widgets, and even use Samsung Pay - all without unfolding the phone. When open, the brilliant 6.7” display allows you to multi-task with up to 2 apps so you can take selfies while browsing your gallery, watch movies while texting friends, and shop multiple stores at once, all on the go. With Flex Mode functionality, you can take hands-free selfies, group pics and videos with the sound of your voice. Its premium craftsmanship comes in a compact form with Samsung's strongest aluminum frame ever and an IPx8 water-resistant rating. The Galaxy Z Flip3 5G is engineered to capture your priceless memories and share them in the moment on America's largest, fastest, and most reliable 5G network.    ",
-    "stock": 100,
-    "image": "img6.png",
-    "brand_id": 2,
-    "categorie_id": 1
-  },
-  {
-    "product_id": 7,
-    "name": "OPPO Find X5 Lite 5G Starry Black 256GB",
-    "price": 490.0,
-    "description": "The Find X5 Lite 5G has a camera so powerful you'll be able to snap custom portraits like a pro and direct your dream motion pictures on the go.    ",
-    "stock": 100,
-    "image": "img7.png",
-    "brand_id": 3,
-    "categorie_id": 1
-  },
-  {
-    "product_id": 8,
-    "name": "Samsung Galaxy A53 5G 128Gb Peach   ",
-    "price": 405.0,
-    "description": "The Galaxy A53 5G is the very best of the Galaxy A series featuring a beautiful 6.5” edge-to-edge display, amazing cameras, and durability all packed into a slim design. Experience an FHD Super AMOLED screen for a crystal-clear view, stereo speakers for a surround-sound feel, and a long-lasting battery for streaming your favorite content. Plus, keeping up with your people is virtually lag-free. Everything you love, all in one.    ",
-    "stock": 100,
-    "image": "img8.png",
-    "brand_id": 2,
-    "categorie_id": 1
-  },
-  {
-    "product_id": 9,
-    "name": "iPad Air 10.9-inch 5G ",
-    "price": 729.99,
-    "description": "The all-new iPad Air. It's more versatile than ever. The stunning 10.9-inch Liquid Retina display with wide color lets you see photos, videos, and games in vivid, true-to-life detail. It features the A14 Bionic chip with Neural Engine, delivering power and advanced machine learning capabilities to edit a 4K video, create a beautiful presentation, design a 3D model, and do all of these things with ease. And now with support for Magic Keyboard and Apple Pencil (2nd generation), fast, easy, and secure Touch ID and Apple Pay, a 12MP back camera and 7MP FaceTime HD camera, USB-C connector for charging and accessories, all-day battery life, fast Wi-Fi 6, and Gigabit-class LTE. With iPad Air you have the power to bring your ideas to life.    ",
-    "stock": 100,
-    "image": "img9.png",
-    "brand_id": 1,
-    "categorie_id": 3
-  },
-  {
-    "product_id": 10,
-    "name": "Galaxy Tab S8+ 5G  ",
-    "price": 999.99,
-    "description": "Plus-up your life with Galaxy Tab S8+ 5G, a premium tablet that helps you get more done on the go. Whether you're catching up on your favorite series on your commute, playing your favorite game or working, blaze through it all — uninterrupted no matter where you are — with 5G connectivity that's now faster and more secure than ever. Prepare to be blown away by a large, 12.4 display that gives you more out of every moment with an sAMOLED screen that delivers brilliant clarity and ultrasmooth views, even in broad daylight. Video calls get the ultimate upgrade too. Feel closer to who you're talking to with an ultrawide front camera, and be heard clearly with three built-in mics and noise reduction.\n\nIf you're looking for a tablet that helps you get more done, Galaxy Tab S8+ 5G delivers. The large display creates more space to work with the option to open and toggle multiple windows for enhanced productivity. We also made the S Pen faster, so it feels more like a real pen — sketch and convert your handwriting to text and automatically sync with your Galaxy phone in Samsung Notes. You can also snap on a keyboard to work on multiple windows and apps all at once with Samsung DeX. And when it comes to power and storage, this premium tablet piles it on with an upgraded Qualcomm Snapdragon chipset with 128GB ROM, external storage up to 1TB. Hold Galaxy Tab S8+ 5G in your hands and unleash the power to do more.  ",
-    "stock": 100,
-    "image": "img10.jpg",
-    "brand_id": 2,
-    "categorie_id": 3
-  },
-  {
-    "product_id": 11,
-    "name": "iPad mini 6th gen    ",
-    "price": 649.99,
-    "description": "The new iPad mini. Featuring an all-screen design with an 8.3-inch Liquid Retina display.1 Powerful A15 Bionic chip with Neural Engine. A 12MP Ultra Wide front camera with Center Stage. USB-C connectivity. Ultrafast 5G.2 Take notes, mark up documents, or capture your biggest ideas with Apple Pencil (2nd generation) that attaches magnetically and charges wirelessly (sold separately).    ",
-    "stock": 100,
-    "image": "img11.png",
-    "brand_id": 1,
-    "categorie_id": 3
-  },
-  {
-    "product_id": 12,
-    "name": "iPad Pro 11-inch 3rd gen    ",
-    "price": 1299.99,
-    "description": "iPad Pro features the powerful Apple M1 chip with next-level performance and all-day battery life.1 The Liquid Retina display on the 11-inch iPad Pro is not only gorgeous, but super portable.2 5G cellular models give you blazing speeds away from Wi-Fi.3 And a front camera with Center Stage keeps you in frame automatically during video calls. iPad Pro has pro cameras and a LiDAR Scanner for stunning photos, videos, and immersive AR. Thunderbolt for connecting to high-performance accessories. And you can add Apple Pencil for note-taking, drawing, and marking up documents, and the Magic Keyboard for a responsive typing experience and trackpad.    ",
-    "stock": 100,
-    "image": "img12.jpg",
-    "brand_id": 1,
-    "categorie_id": 3
-  },
-  {
-    "product_id": 13,
-    "name": "Galaxy Tab S7 FE 5G    ",
-    "price": 669.99,
-    "description": "Revolutionize your life with the amazing Samsung Galaxy Tab S7 FE 5G. This 5G1 tablet lets you study, stream, and share with blazing fast 5G and comes with a big 12.4 screen to deliver a big experience. The responsive S Pen lets you write, draw, and click with a design that feels closer to pen on paper than ever before and with a large, fast-charging battery, Tab S7 FE 5G comes with all the power you need to get through your day.  ",
-    "stock": 100,
-    "image": "img13.jpg",
-    "brand_id": 2,
-    "categorie_id": 3
-  },
-  {
-    "product_id": 14,
-    "name": "Galaxy Note20 Ultra 5G ",
-    "price": 1199.99,
-    "description": "The power to work. The power to play. The Samsung Galaxy Note20 Ultra 5G has a beautiful 6.9” WQHD+ curved display, pro-grade cameras with a 108MP main lens and optic 5X Space Zoom, 8K video capabilities, and a powerful battery. This isn't the time to slow down, this is the time to forge ahead and take the opportunities that come your way. You don’t need a smartphone. You need a power phone. One as beautiful as it is intelligent with a pen that is mightier, a battery that doesn't leave you hanging and is as well-connected as you. The Galaxy Note20 Ultra 5G takes power to the next level with cutting-edge technology, providing you next-gen connectivity on America’s largest 5G network.    ",
-    "stock": 100,
-    "image": "img14.jpg",
-    "brand_id": 2,
-    "categorie_id": 1
-  },
-  {
-    "product_id": 15,
-    "name": "9 Pro 5G    ",
-    "price": 750.0,
-    "description": "The OnePlus 9 Pro 5G is an ultimate premium smartphone that addresses the wants and needs of smartphone users. Take your best shot with our best Quad Camera system yet, featuring state-of-the-art hardware and Natural Color Calibration co-developed with Hasselblad. Watch your favorite TV shows and films or play your favorite games on the 9 Pro's stunning QHD+ display with HyperTouch, a new technology that delivers more responsive gaming in select titles. Charge your 9 Pro quickly with OnePlus proprietary Warp Charge 65T and the all-new Wireless Warp Charge 50, capable of delivering a day's power in as fast as 15 minutes. It's all wrapped together in a seamless and burdenless design, and powered by the latest technology from Qualcomm, the Snapdragon 888. OnePlus 9 Pro 5G is the ultimate flagship phone for today and tomorrow.    ",
-    "stock": 100,
-    "image": "img15.jpg",
-    "brand_id": 5,
-    "categorie_id": 1
-  },
-  {
-    "product_id": 16,
-    "name": "Galaxy Chromebook Go    ",
-    "price": 350.0,
-    "description": "Make the grades with a Chromebook that’s at the top of its class in value and performance. Galaxy Chromebook Go is built with premium craftsmanship to endure everyday hiccups and long-lasting battery life to power through class without needing to sit by a power outlet. Plus, you'll blaze through every assignment with fast Wi-Fi connectivity. Thinner and lighter than other Chromebooks, Galaxy Chromebook Go fits easily into backpacks to help lighten the load. Best of all, Galaxy Chromebook Go is priced to please.    ",
-    "stock": 100,
-    "image": "img16.jpg",
-    "brand_id": 2,
-    "categorie_id": 2
-  }
+	{
+		"product_id": 1,
+		"name": "iPhone 13 Pro Max 128Gb Alpine Green",
+		"price": 1099.95,
+		"description": "iPhone 13 Pro Max. The biggest Pro camera system upgrade ever. Super Retina XDR display with ProMotion for a faster, more responsive feel. Lightning-fast A15 Bionic chip. Superfast 5G. Durable design and the best battery life ever in an iPhone.",
+		"stock": 100,
+		"image": "img1.png",
+		"brand_id": 1,
+		"categorie_id": 1
+	},
+	{
+		"product_id": 2,
+		"name": "iPhone SE 5G 64GB Midnight (black)",
+		"price": 399.95,
+		"description": "iPhone SE 5G 64GB . Lightning-fast A15 Bionic chip and fast 5G. Big-time battery life and a superstar camera. Plus, the toughest glass in a smartphone and a Home button with secure Touch ID. ",
+		"stock": 100,
+		"image": "img2.png",
+		"brand_id": 1,
+		"categorie_id": 1
+	},
+	{
+		"product_id": 3,
+		"name": "iPhone 13 256Gb Midnight (black)",
+		"price": 899.95,
+		"description": "iPhone 13. The most advanced dual-camera system ever on iPhone. Lightning-fast A15 Bionic chip. A big leap in battery life. Durable design. Superfast 5G. And a brighter Super Retina XDR display.",
+		"stock": 100,
+		"image": "img3.png",
+		"brand_id": 1,
+		"categorie_id": 1
+	},
+	{
+		"product_id": 4,
+		"name": "Samsung Galaxy S22 Ultra 128GB",
+		"price": 1199.95,
+		"description": "The Samsung Galaxy S22 Ultra offers the ultimate epic standard of smartphone experiences bringing back the best of Galaxy Note to the S22 line with an embedded SPen enabling new ways to work and create on the go. The quad cameras let you capture premium detail with the ultra-clear 108MP main lens, the highest resolution available on a smartphone. Shoot videos that rival how epic your life is with stunning 8K recording. Your favorite content will look even better on the amazingly bright 6.8” WQHD+ Dynamic AMOLED 2X display with adaptive 120Hz refresh rate. The Galaxy S22 Ultra’s long lasting 5000 mAh intelligent battery powers your day and then some. Do more of what you love, with the incredibly fast 4nm processor, all on the nation’s largest, fastest, and most reliable nationwide 5G network.",
+		"stock": 100,
+		"image": "img4.png",
+		"brand_id": 2,
+		"categorie_id": 1
+	},
+	{
+		"product_id": 5,
+		"name": "Google Pixel 6 Stormy Black 128GB  ",
+		"price": 599.95,
+		"description": "Meet Pixel 6. It's completely reimagined, inside and out. Powered by Tensor, Google's first-ever processor, it's fast, smart, and secure. The all-day battery adapts to you. The Pixel Camera captures a moment just how you experienced it. And the Personal Safety app and the new Titan M2TM chip help protect you, your stuff, and your privacy.    ",
+		"stock": 100,
+		"image": "img5.png",
+		"brand_id": 4,
+		"categorie_id": 1
+	},
+	{
+		"product_id": 6,
+		"name": "Samsung Galaxy Z Flip3 5G 256GB Cream ",
+		"price": 654.0,
+		"description": "Set the trend your way with the stylish and compact Galaxy Z Flip3 5G. It's interactive cover screen allows you to view and reply to notifications, browse various widgets, and even use Samsung Pay - all without unfolding the phone. When open, the brilliant 6.7” display allows you to multi-task with up to 2 apps so you can take selfies while browsing your gallery, watch movies while texting friends, and shop multiple stores at once, all on the go. With Flex Mode functionality, you can take hands-free selfies, group pics and videos with the sound of your voice. Its premium craftsmanship comes in a compact form with Samsung's strongest aluminum frame ever and an IPx8 water-resistant rating. The Galaxy Z Flip3 5G is engineered to capture your priceless memories and share them in the moment on America's largest, fastest, and most reliable 5G network.    ",
+		"stock": 100,
+		"image": "img6.png",
+		"brand_id": 2,
+		"categorie_id": 1
+	},
+	{
+		"product_id": 7,
+		"name": "OPPO Find X5 Lite 5G Starry Black 256GB",
+		"price": 490.0,
+		"description": "The Find X5 Lite 5G has a camera so powerful you'll be able to snap custom portraits like a pro and direct your dream motion pictures on the go.    ",
+		"stock": 100,
+		"image": "img7.png",
+		"brand_id": 3,
+		"categorie_id": 1
+	},
+	{
+		"product_id": 8,
+		"name": "Samsung Galaxy A53 5G 128Gb Peach   ",
+		"price": 405.0,
+		"description": "The Galaxy A53 5G is the very best of the Galaxy A series featuring a beautiful 6.5” edge-to-edge display, amazing cameras, and durability all packed into a slim design. Experience an FHD Super AMOLED screen for a crystal-clear view, stereo speakers for a surround-sound feel, and a long-lasting battery for streaming your favorite content. Plus, keeping up with your people is virtually lag-free. Everything you love, all in one.    ",
+		"stock": 100,
+		"image": "img8.png",
+		"brand_id": 2,
+		"categorie_id": 1
+	},
+	{
+		"product_id": 9,
+		"name": "iPad Air 10.9-inch 5G ",
+		"price": 729.99,
+		"description": "The all-new iPad Air. It's more versatile than ever. The stunning 10.9-inch Liquid Retina display with wide color lets you see photos, videos, and games in vivid, true-to-life detail. It features the A14 Bionic chip with Neural Engine, delivering power and advanced machine learning capabilities to edit a 4K video, create a beautiful presentation, design a 3D model, and do all of these things with ease. And now with support for Magic Keyboard and Apple Pencil (2nd generation), fast, easy, and secure Touch ID and Apple Pay, a 12MP back camera and 7MP FaceTime HD camera, USB-C connector for charging and accessories, all-day battery life, fast Wi-Fi 6, and Gigabit-class LTE. With iPad Air you have the power to bring your ideas to life.    ",
+		"stock": 100,
+		"image": "img9.png",
+		"brand_id": 1,
+		"categorie_id": 3
+	},
+	{
+		"product_id": 10,
+		"name": "Galaxy Tab S8+ 5G  ",
+		"price": 999.99,
+		"description": "Plus-up your life with Galaxy Tab S8+ 5G, a premium tablet that helps you get more done on the go. Whether you're catching up on your favorite series on your commute, playing your favorite game or working, blaze through it all — uninterrupted no matter where you are — with 5G connectivity that's now faster and more secure than ever. Prepare to be blown away by a large, 12.4 display that gives you more out of every moment with an sAMOLED screen that delivers brilliant clarity and ultrasmooth views, even in broad daylight. Video calls get the ultimate upgrade too. Feel closer to who you're talking to with an ultrawide front camera, and be heard clearly with three built-in mics and noise reduction.\n\nIf you're looking for a tablet that helps you get more done, Galaxy Tab S8+ 5G delivers. The large display creates more space to work with the option to open and toggle multiple windows for enhanced productivity. We also made the S Pen faster, so it feels more like a real pen — sketch and convert your handwriting to text and automatically sync with your Galaxy phone in Samsung Notes. You can also snap on a keyboard to work on multiple windows and apps all at once with Samsung DeX. And when it comes to power and storage, this premium tablet piles it on with an upgraded Qualcomm Snapdragon chipset with 128GB ROM, external storage up to 1TB. Hold Galaxy Tab S8+ 5G in your hands and unleash the power to do more.  ",
+		"stock": 100,
+		"image": "img10.jpg",
+		"brand_id": 2,
+		"categorie_id": 3
+	},
+	{
+		"product_id": 11,
+		"name": "iPad mini 6th gen    ",
+		"price": 649.99,
+		"description": "The new iPad mini. Featuring an all-screen design with an 8.3-inch Liquid Retina display.1 Powerful A15 Bionic chip with Neural Engine. A 12MP Ultra Wide front camera with Center Stage. USB-C connectivity. Ultrafast 5G.2 Take notes, mark up documents, or capture your biggest ideas with Apple Pencil (2nd generation) that attaches magnetically and charges wirelessly (sold separately).    ",
+		"stock": 100,
+		"image": "img11.png",
+		"brand_id": 1,
+		"categorie_id": 3
+	},
+	{
+		"product_id": 12,
+		"name": "iPad Pro 11-inch 3rd gen    ",
+		"price": 1299.99,
+		"description": "iPad Pro features the powerful Apple M1 chip with next-level performance and all-day battery life.1 The Liquid Retina display on the 11-inch iPad Pro is not only gorgeous, but super portable.2 5G cellular models give you blazing speeds away from Wi-Fi.3 And a front camera with Center Stage keeps you in frame automatically during video calls. iPad Pro has pro cameras and a LiDAR Scanner for stunning photos, videos, and immersive AR. Thunderbolt for connecting to high-performance accessories. And you can add Apple Pencil for note-taking, drawing, and marking up documents, and the Magic Keyboard for a responsive typing experience and trackpad.    ",
+		"stock": 100,
+		"image": "img12.jpg",
+		"brand_id": 1,
+		"categorie_id": 3
+	},
+	{
+		"product_id": 13,
+		"name": "Galaxy Tab S7 FE 5G    ",
+		"price": 669.99,
+		"description": "Revolutionize your life with the amazing Samsung Galaxy Tab S7 FE 5G. This 5G1 tablet lets you study, stream, and share with blazing fast 5G and comes with a big 12.4 screen to deliver a big experience. The responsive S Pen lets you write, draw, and click with a design that feels closer to pen on paper than ever before and with a large, fast-charging battery, Tab S7 FE 5G comes with all the power you need to get through your day.  ",
+		"stock": 100,
+		"image": "img13.jpg",
+		"brand_id": 2,
+		"categorie_id": 3
+	},
+	{
+		"product_id": 14,
+		"name": "Galaxy Note20 Ultra 5G ",
+		"price": 1199.99,
+		"description": "The power to work. The power to play. The Samsung Galaxy Note20 Ultra 5G has a beautiful 6.9” WQHD+ curved display, pro-grade cameras with a 108MP main lens and optic 5X Space Zoom, 8K video capabilities, and a powerful battery. This isn't the time to slow down, this is the time to forge ahead and take the opportunities that come your way. You don’t need a smartphone. You need a power phone. One as beautiful as it is intelligent with a pen that is mightier, a battery that doesn't leave you hanging and is as well-connected as you. The Galaxy Note20 Ultra 5G takes power to the next level with cutting-edge technology, providing you next-gen connectivity on America’s largest 5G network.    ",
+		"stock": 100,
+		"image": "img14.jpg",
+		"brand_id": 2,
+		"categorie_id": 1
+	},
+	{
+		"product_id": 15,
+		"name": "9 Pro 5G    ",
+		"price": 750.0,
+		"description": "The OnePlus 9 Pro 5G is an ultimate premium smartphone that addresses the wants and needs of smartphone users. Take your best shot with our best Quad Camera system yet, featuring state-of-the-art hardware and Natural Color Calibration co-developed with Hasselblad. Watch your favorite TV shows and films or play your favorite games on the 9 Pro's stunning QHD+ display with HyperTouch, a new technology that delivers more responsive gaming in select titles. Charge your 9 Pro quickly with OnePlus proprietary Warp Charge 65T and the all-new Wireless Warp Charge 50, capable of delivering a day's power in as fast as 15 minutes. It's all wrapped together in a seamless and burdenless design, and powered by the latest technology from Qualcomm, the Snapdragon 888. OnePlus 9 Pro 5G is the ultimate flagship phone for today and tomorrow.    ",
+		"stock": 100,
+		"image": "img15.jpg",
+		"brand_id": 5,
+		"categorie_id": 1
+	},
+	{
+		"product_id": 16,
+		"name": "Galaxy Chromebook Go    ",
+		"price": 350.0,
+		"description": "Make the grades with a Chromebook that’s at the top of its class in value and performance. Galaxy Chromebook Go is built with premium craftsmanship to endure everyday hiccups and long-lasting battery life to power through class without needing to sit by a power outlet. Plus, you'll blaze through every assignment with fast Wi-Fi connectivity. Thinner and lighter than other Chromebooks, Galaxy Chromebook Go fits easily into backpacks to help lighten the load. Best of all, Galaxy Chromebook Go is priced to please.    ",
+		"stock": 100,
+		"image": "img16.jpg",
+		"brand_id": 2,
+		"categorie_id": 2
+	}
 ]
