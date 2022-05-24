@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Clients from './Clients';
 
 import classes from './DashboardPage.module.scss';
@@ -10,8 +10,16 @@ import { Error } from '../../pages/Error';
 import EditProduct from './Product/EditProduct';
 import AddProduct from './Product/AddProduct';
 import { RightNav } from './RightNav';
+import { useSelector } from 'react-redux';
 
 const DashboardPage = () => {
+	const { loggedIn, role } = useSelector((state) => state.auth);
+	let navigate = useNavigate();
+
+	useEffect(() => {
+		if (!loggedIn) navigate('/login');
+		if (loggedIn && role === 'user') navigate('/profile');
+	}, [loggedIn]);
 	return (
 		<div className={classes.container}>
 			<LeftNav />

@@ -26,20 +26,6 @@ function App() {
 
 	useEffect(() => {
 		dispatch(fetchData());
-		// const insertProduct = () => {
-		// 	products.forEach(async (element) => {
-		// 		const el = JSON.stringify(element);
-		// 		const data = await fetch(url, {
-		// 			method: 'POST',
-		// 			headers: {
-		// 				Accept: 'application/json',
-		// 				'Content-Type': 'application/json',
-		// 			},
-		// 			body: el,
-		// 		});
-		// 	});
-		// };
-		//
 	}, []);
 
 	return (
@@ -55,11 +41,12 @@ function App() {
 				{cart.length > 0 && checkoutDone && (
 					<Route path='/payement' element={<Payement />} />
 				)}
-				<Route path='/profile/*' element={<Profile />} />
 
-				<Route path='/dashboard/*' element={<Dashboard />} />
 				<Route path='/login' element={<Login />} />
 				<Route path='/register' element={<Register />} />
+				<Route path='/profile/*' element={<Profile />} />
+				<Route path='/dashboard/*' element={<Dashboard />} />
+
 				<Route path='/product/:id' element={<Product />} />
 				<Route path='*' element={<Error />} />
 			</Routes>

@@ -12,9 +12,12 @@ import {
 } from 'react-icons/fi';
 import { FaUserCircle } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
+import { logout } from '../../store/authentication';
+import { useDispatch } from 'react-redux';
 
 const LeftNav = () => {
 	const location = useLocation();
+	const dispatch = useDispatch();
 
 	return (
 		<nav className={classes.nav}>
@@ -32,24 +35,15 @@ const LeftNav = () => {
 							Dashboard
 						</Link>
 					</li>
+
 					<li
 						className={`${
-							location.pathname.split('/')[2] === 'clients' && classes.clicked
+							location.pathname.split('/')[2] === 'users' && classes.clicked
 						}`}
 					>
-						<Link to='clients'>
-							<FiUsers />
-							Clients
-						</Link>
-					</li>
-					<li
-						className={`${
-							location.pathname.split('/')[2] === 'admins' && classes.clicked
-						}`}
-					>
-						<Link to='admins'>
+						<Link to='users'>
 							<FiUser />
-							Admins
+							Users
 						</Link>
 					</li>
 					<li
@@ -82,7 +76,7 @@ const LeftNav = () => {
 							Products
 						</Link>
 					</li>
-					<li className={classes.logout}>
+					<li className={classes.logout} onClick={() => dispatch(logout())}>
 						<Link to=''>
 							<FiLogOut />
 							Logout

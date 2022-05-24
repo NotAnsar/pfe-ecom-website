@@ -2,13 +2,16 @@ import React from 'react';
 
 import classes from '../Dashboard/DashboardPage.module.scss';
 
-import { FiGrid, FiUser, FiSettings, FiHeart, FiLogOut } from 'react-icons/fi';
+import { FiUser, FiSettings, FiHeart, FiLogOut } from 'react-icons/fi';
 import { FaUserCircle } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
+import { logout } from '../../store/authentication';
+import { useDispatch } from 'react-redux';
 
 const LeftNav = () => {
 	const location = useLocation();
-	console.log(location.pathname);
+	const dispatch = useDispatch();
+
 	return (
 		<nav className={classes.nav}>
 			<div className={classes.wrapper}>
@@ -35,7 +38,7 @@ const LeftNav = () => {
 							<FiSettings /> Settings
 						</Link>
 					</li>
-					<li className={classes.logout}>
+					<li className={classes.logout} onClick={() => dispatch(logout())}>
 						<Link to=''>
 							<FiLogOut />
 							Logout

@@ -25,9 +25,7 @@ const Products = () => {
 						<th>Description</th>
 						<th>Price</th>
 						<th>Stock</th>
-						<th>
-							<FiTrash2 />
-						</th>
+
 						<th>
 							<FiEdit />
 						</th>
@@ -53,11 +51,6 @@ const Products = () => {
 									<td>{p.description.split(' ').slice(0, 3).join(' ')}...</td>
 									<td>{p.price}</td>
 									<td>{p.stock}</td>
-									<td>
-										<Link to='edit'>
-											<FiTrash2 />
-										</Link>
-									</td>
 									<td>
 										<Link to={`edit/${p.product_id}`}>
 											<FiEdit />
