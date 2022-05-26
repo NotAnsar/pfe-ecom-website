@@ -62,15 +62,62 @@ export const Register = (email, password, firstName, lastName, role) => {
 	};
 };
 
-const initialState = {
-	loggedIn: false,
-	id: null,
-	role: '',
-	firstName: '',
-	lastName: '',
-	email: '',
-	error: false,
+export const addAdresse = (telephone, adresse, ville, user_id, zipCode) => {
+	return async (dispatch) => {
+		async function addAdresse() {
+			const res = await fetch(`${url}/adresses`, {
+				method: 'POST',
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					telephone,
+					adresse,
+					ville,
+					user_id,
+					zipCode,
+				}),
+			});
+
+			const adresse = await res.json();
+
+			return { adresse };
+		}
+		try {
+			dispatch(authSlice.actions.addAdr(await addAdresse()));
+		} catch (error) {
+			console.log(error);
+			return { adresse: null };
+		}
+	};
 };
+
+function getItem(item) {
+	try {
+		JSON.parse(localStorage.getItem(item));
+	} catch (error) {
+		localStorage.setItem(item, JSON.stringify(initialState));
+	}
+	if (localStorage.getItem(item)) return JSON.parse(localStorage.getItem(item));
+	else {
+		localStorage.setItem(item, JSON.stringify(null));
+		return null;
+	}
+}
+
+const initialState = getItem('user')
+	? getItem('user')
+	: {
+			loggedIn: false,
+			id: null,
+			role: '',
+			firstName: '',
+			lastName: '',
+			email: '',
+			error: false,
+			adresse: null,
+	  };
 
 export const authSlice = createSlice({
 	name: 'counter',
@@ -85,6 +132,8 @@ export const authSlice = createSlice({
 			state.lastName = action.payload.lastName;
 			state.error = action.payload.error;
 			state.loggedIn = action.payload.loggedIn;
+
+			localStorage.setItem('user', JSON.stringify(action.payload));
 		},
 		getRegister: (state, action) => {
 			console.log(action.payload);
@@ -95,6 +144,14 @@ export const authSlice = createSlice({
 			state.lastName = action.payload.lastName;
 			state.error = action.payload.error;
 			state.loggedIn = action.payload.loggedIn;
+
+			localStorage.setItem('user', JSON.stringify(action.payload));
+		},
+		addAdr: (state, action) => {
+			// state.adresse = action.payload.adresse;
+		},
+		getAdr: (state, action) => {
+			// state.adresse = action.payload.adresse;
 		},
 		logout: (state) => {
 			state.id = null;
@@ -103,6 +160,8 @@ export const authSlice = createSlice({
 			state.firstName = '';
 			state.lastName = '';
 			state.loggedIn = false;
+
+			localStorage.clear();
 		},
 	},
 });

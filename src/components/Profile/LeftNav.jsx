@@ -7,6 +7,7 @@ import { FaUserCircle } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 import { logout } from '../../store/authentication';
 import { useDispatch } from 'react-redux';
+import { clearCarts } from '../../store/cartSlice';
 
 const LeftNav = () => {
 	const location = useLocation();
@@ -38,7 +39,13 @@ const LeftNav = () => {
 							<FiSettings /> Settings
 						</Link>
 					</li>
-					<li className={classes.logout} onClick={() => dispatch(logout())}>
+					<li
+						className={classes.logout}
+						onClick={() => {
+							dispatch(logout());
+							dispatch(clearCarts());
+						}}
+					>
 						<Link to=''>
 							<FiLogOut />
 							Logout
