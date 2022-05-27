@@ -13,11 +13,12 @@ import {
 import { FaUserCircle } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 import { logout } from '../../store/authentication';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const LeftNav = () => {
 	const location = useLocation();
 	const dispatch = useDispatch();
+	const { lastName, firstName } = useSelector((state) => state.auth);
 
 	return (
 		<nav className={classes.nav}>
@@ -25,7 +26,12 @@ const LeftNav = () => {
 				<ul>
 					<li className={classes.profile}>
 						<FaUserCircle />
-						<p>Ansar Karrouach</p>
+						<p>{`${
+							firstName?.charAt(0).toUpperCase() +
+							firstName?.slice(1).toLowerCase()
+						} ${
+							lastName.charAt(0).toUpperCase() + lastName.slice(1).toLowerCase()
+						}`}</p>
 					</li>
 					<li
 						className={`${!location.pathname.split('/')[2] && classes.clicked}`}

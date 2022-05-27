@@ -4,9 +4,10 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import { Error } from '../../pages/Error';
 
 import classes from '../Dashboard/DashboardPage.module.scss';
-import { RightNav } from '../Dashboard/RightNav';
+import Adresse from './Adresse';
 
 import LeftNav from './LeftNav';
+import { ProfileInfo } from './ProfileInfo';
 
 const ProfilePage = () => {
 	const { loggedIn, role } = useSelector((state) => state.auth);
@@ -16,12 +17,14 @@ const ProfilePage = () => {
 		if (!loggedIn) navigate('/login');
 		if (loggedIn && role === 'admin') navigate('/dashboard');
 	}, [loggedIn]);
+
 	return (
 		<div className={classes.container}>
 			<LeftNav />
 
 			<Routes>
-				<Route path='' element={<RightNav />} />
+				<Route path='' element={<ProfileInfo />} />
+				<Route path='adresse' element={<Adresse />} />
 
 				<Route path='*' element={<Error />} />
 			</Routes>

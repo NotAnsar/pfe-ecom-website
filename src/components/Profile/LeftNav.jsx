@@ -2,17 +2,18 @@ import React from 'react';
 
 import classes from '../Dashboard/DashboardPage.module.scss';
 
-import { FiUser, FiSettings, FiHeart, FiLogOut } from 'react-icons/fi';
+import { FiUser, FiHome, FiLogOut } from 'react-icons/fi';
 import { FaUserCircle } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 import { logout } from '../../store/authentication';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { clearCarts } from '../../store/cartSlice';
 
 const LeftNav = () => {
 	const location = useLocation();
 	const dispatch = useDispatch();
 
+	const { lastName, firstName } = useSelector((state) => state.auth);
 	return (
 		<nav className={classes.nav}>
 			<div className={classes.wrapper}>
@@ -20,7 +21,12 @@ const LeftNav = () => {
 					<li className={classes.profile}>
 						{/* <img src='' alt='' /> */}
 						<FaUserCircle />
-						<p>Ansar Karrouach</p>
+						<p>{`${
+							firstName?.charAt(0).toUpperCase() +
+							firstName?.slice(1).toLowerCase()
+						} ${
+							lastName.charAt(0).toUpperCase() + lastName.slice(1).toLowerCase()
+						}`}</p>
 					</li>
 					<li
 						className={`${!location.pathname.split('/')[2] && classes.clicked}`}
@@ -32,11 +38,11 @@ const LeftNav = () => {
 					</li>
 					<li
 						className={`${
-							location.pathname.split('/')[2] === 'settings' && classes.clicked
+							location.pathname.split('/')[2] === 'adresse' && classes.clicked
 						}`}
 					>
-						<Link to='settings'>
-							<FiSettings /> Settings
+						<Link to='adresse'>
+							<FiHome /> Adresse
 						</Link>
 					</li>
 					<li

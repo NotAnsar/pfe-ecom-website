@@ -35,6 +35,7 @@ const RegisterForm = () => {
 		)
 			return;
 
+		console.log(formData);
 		dispatch(
 			Register(
 				formData.email.trim(),
