@@ -146,6 +146,7 @@
 		padding: 0.35px 5px;
 		text-align: left;
 	}
+
 	svg {
 		height: 1rem;
 		width: 1rem;
@@ -153,7 +154,14 @@
 		align-items: center;
 		justify-content: center;
 	}
-
+	thead {
+		th {
+			font-weight: 500;
+		}
+		svg {
+			stroke-width: 2.5;
+		}
+	}
 	img {
 		width: 2rem;
 	}

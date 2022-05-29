@@ -9,37 +9,29 @@ const AddProduct = () => {
 	const [formData, setFormData] = useState({
 		name: '',
 		price: '',
-		desc: '',
+		description: '',
 		stock: '',
 		image: '',
-		categorieId: '',
-		brandId: '',
+		categorie_id: 0,
+		brand_id: 0,
 	});
 
 	const formHandler = (e) => {
 		e.preventDefault();
 		if (
 			formData.name.trim() === '' ||
-			formData.price.trim() === '' ||
-			formData.desc.trim() === '' ||
-			formData.stock.trim() === '' ||
-			formData.image.trim() === '' ||
-			formData.categorieId.trim() === '' ||
-			formData.brandId.trim() === ''
+			formData.description.trim() === '' ||
+			formData.image.trim() === ''
 		) {
 			alert('Fill Out All The Fields');
 			return;
 		}
+		if (formData.categorie_id === 0 || formData.brand_id === 0) {
+			alert('Choose a categorie or brand');
+			return;
+		}
 
-		const product = {
-			name: formData.name,
-			price: formData.price,
-			desc: formData.desc,
-			stock: formData.stock,
-			image: formData.image,
-			categorieId: formData.categorieId,
-			brandId: formData.brandId,
-		};
+		console.log(formData);
 	};
 
 	const handleChange = (e) => {
@@ -48,6 +40,7 @@ const AddProduct = () => {
 
 		setFormData((prev) => ({ ...prev, [name]: value }));
 	};
+
 	return (
 		<div className={classes.right}>
 			<h1>Add Product</h1>
@@ -74,8 +67,13 @@ const AddProduct = () => {
 								/>
 							</div>
 						</div>
-						<label htmlFor='desc'>Description</label>
-						<input type='text' onChange={handleChange} name='desc' required />
+						<label htmlFor='description'>Description</label>
+						<input
+							type='text'
+							onChange={handleChange}
+							name='description'
+							required
+						/>
 						<label htmlFor='stock'>Stock</label>
 						<input
 							type='number'
@@ -94,24 +92,42 @@ const AddProduct = () => {
 						/>
 						<div className={formClasses.splitForm}>
 							<div>
-								<label htmlFor='categorieId'>Categorie Id</label>
-								<select name='categorieId' className={formClasses.select}>
+								<label htmlFor='categorie_id'>Categorie Id</label>
+								<select
+									name='categorie_id'
+									onChange={handleChange}
+									className={formClasses.select}
+								>
+									<option key={0} value={0}>
+										Choose
+									</option>
 									{categories.map((c) => (
-										<option value={c.categorie_id}>{c.categorie}</option>
+										<option key={c.categorie_id} value={c.categorie_id}>
+											{c.categorie}
+										</option>
 									))}
 								</select>
 							</div>
 							<div>
-								<label htmlFor='brandId'>Brand Id</label>
-								<select name='brandId' className={formClasses.select}>
+								<label htmlFor='brand_id'>Brand Id</label>
+								<select
+									name='brand_id'
+									onChange={handleChange}
+									className={formClasses.select}
+								>
+									<option key={0} value={0}>
+										Choose
+									</option>
 									{brands.map((c) => (
-										<option value={c.brand_id}>{c.brand}</option>
+										<option value={c.brand_id} key={c.brand_id}>
+											{c.brand}
+										</option>
 									))}
 								</select>
 							</div>
 						</div>
 						<div className={formClasses.btn}>
-							<input type='Submit' defaultValue='Add' form='payementForm' />
+							<input type='Submit' defaultValue='Add' />
 						</div>
 					</form>
 				</div>

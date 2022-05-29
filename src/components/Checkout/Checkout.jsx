@@ -18,6 +18,7 @@ const Checkout = ({ type }) => {
 		if (!loggedIn) navigate('/login');
 		if (role == 'admin') navigate('/dashboard');
 	}, [loggedIn]);
+
 	return (
 		<div className={classes.container}>
 			<div className={classes.stepContainer}>

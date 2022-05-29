@@ -6,6 +6,7 @@ import classes from './ShopItem.module.scss';
 import { useSelector } from 'react-redux';
 import ShopHeader from './ShopHeader';
 import Filter from './Filter';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 const ShopAll = () => {
 	const { products, brands, categories } = useSelector(
@@ -26,8 +27,11 @@ const ShopAll = () => {
 				<div className={classes.shopContainer}>
 					<Filter brands={brands} categories={categories} />
 					{(!products || brands.length === 0 || categories.length === 0) && (
-						<div className='loading'>
-							<img src='./images/loading.gif' />
+						<div style={{ height: '600px' }}>
+							<div className='load'>
+								{/* <FiLoader /> */}
+								<AiOutlineLoading3Quarters />
+							</div>
 						</div>
 					)}
 					<div className={classes.itemContainer}>

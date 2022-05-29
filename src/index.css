@@ -1,41 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --text-color: #212529;
-  --light-text-color: #fefefe;
-  --bg-color: #fefefe;
-  --dark-bg-color: #121212;
-  --max-width: 1200px;
+	--text-color: #212529;
+	--light-text-color: #fefefe;
+	--bg-color: #fefefe;
+	--dark-bg-color: #121212;
+	--max-width: 1200px;
 }
 * {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 body {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  overflow-x: hidden;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-family: 'Poppins', sans-serif;
+	overflow-x: hidden;
+	background-color: var(--bg-color);
+	color: var(--text-color);
 }
 
 ul {
-  list-style: none;
-  padding: 0;
+	list-style: none;
+	padding: 0;
 }
 
 a {
-  text-decoration: none;
-  color: var(--text-color);
+	text-decoration: none;
+	color: var(--text-color);
 }
 
 .loading {
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	height: 80vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 /* p,
@@ -49,3 +49,36 @@ h6,
 button {
   letter-spacing: 2px;
 } */
+
+.load svg {
+	height: 7rem;
+	width: 7rem;
+}
+.load {
+	height: 60vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	animation: linear spin 2s infinite;
+}
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes mymove {
+	0% {
+		transform: rotate(0);
+	}
+	50% {
+		transform: rotate(180deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

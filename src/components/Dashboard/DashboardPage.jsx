@@ -11,6 +11,15 @@ import EditProduct from './Product/EditProduct';
 import AddProduct from './Product/AddProduct';
 import { RightNav } from './RightNav';
 import { useSelector } from 'react-redux';
+import Brands from './Brand/Brands';
+import AddBrand from './Brand/AddBrand';
+import EditBrand from './Brand/EditBrand';
+import Categories from './Categorie/Categories';
+import AddCategorie from './Categorie/AddCategorie';
+import EditCategorie from './Categorie/EditCategorie';
+import Users from './User/Users';
+import AddUser from './User/AddUser';
+import EditUser from './User/EditUser';
 
 const DashboardPage = () => {
 	const { loggedIn, role } = useSelector((state) => state.auth);
@@ -26,14 +35,23 @@ const DashboardPage = () => {
 
 			<Routes>
 				<Route path='' element={<RightNav />} />
-				{/* <Route path='clients' element={</>} /> */}
-				{/* <Route path='admins' element={< />} /> */}
-				{/* <Route path='brands' element={<Dashboard />} /> */}
-				{/* <Route path='categories' element={<Login />} /> */}
-				{/* <Route path='register' element={<Register />} /> */}
+
+				<Route path='users' element={<Users />} />
+				<Route path='users/add' element={<AddUser />} />
+				<Route path='users/edit/:id' element={<EditUser />} />
+
+				<Route path='brands' element={<Brands />} />
+				<Route path='brands/add' element={<AddBrand />} />
+				<Route path='brands/edit/:id' element={<EditBrand />} />
+
+				<Route path='categories' element={<Categories />} />
+				<Route path='categories/add' element={<AddCategorie />} />
+				<Route path='categories/edit/:id' element={<EditCategorie />} />
+
 				<Route path='products' element={<Products />} />
 				<Route path='products/edit/:id' element={<EditProduct />} />
 				<Route path='products/add' element={<AddProduct />} />
+
 				<Route path='*' element={<Error />} />
 			</Routes>
 		</div>

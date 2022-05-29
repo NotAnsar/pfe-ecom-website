@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import classes from '../DashboardPage.module.scss';
 import formClasses from '../../Forms/Form.module.scss';
@@ -10,46 +10,47 @@ const EditProduct = () => {
 		(state) => state.products
 	);
 	const { id } = useParams();
-	let data = null;
-	if (products.length !== 0) {
-		data = products?.find((d) => d.product_id === +id);
-		console.log(data);
+	const [data, setData] = useState(null);
+
+	if (products.length !== 0 && data === null) {
+		setData(products?.find((d) => d.product_id === +id));
 	}
-	console.log(id);
+
 	const [formData, setFormData] = useState({
 		name: '',
 		price: '',
-		desc: '',
+		description: '',
 		stock: '',
 		image: '',
-		categorieId: '',
-		brandId: '',
+		categorie_id: '',
+		brand_id: '',
 	});
-
+	useEffect(() => {
+		if (data) {
+			setFormData({
+				name: data.name,
+				price: data.price,
+				description: data.description,
+				stock: data.stock,
+				image: data.image,
+				categorie_id: data.categorie_id,
+				brand_id: data.brand_id,
+			});
+		}
+	}, [data]);
 	const formHandler = (e) => {
 		e.preventDefault();
+
 		if (
 			formData.name.trim() === '' ||
-			formData.price.trim() === '' ||
-			formData.desc.trim() === '' ||
-			formData.stock.trim() === '' ||
-			formData.image.trim() === '' ||
-			formData.categorieId.trim() === '' ||
-			formData.brandId.trim() === ''
+			formData.description.trim() === '' ||
+			formData.image.trim() === ''
 		) {
 			alert('Fill Out All The Fields');
 			return;
 		}
 
-		const product = {
-			name: formData.name,
-			price: formData.price,
-			desc: formData.desc,
-			stock: formData.stock,
-			image: formData.image,
-			categorieId: formData.categorieId,
-			brandId: formData.brandId,
-		};
+		console.log(formData);
 	};
 
 	const handleChange = (e) => {
@@ -58,7 +59,17 @@ const EditProduct = () => {
 
 		setFormData((prev) => ({ ...prev, [name]: value }));
 	};
-	if (data === null) return <p>Loading</p>;
+
+	if (data === null)
+		return (
+			<div className={classes.right}>
+				<div className='load'>
+					{/* <FiLoader /> */}
+					<AiOutlineLoading3Quarters />
+				</div>
+			</div>
+		);
+
 	return (
 		<div className={classes.right}>
 			<h1>Edit Product</h1>
@@ -87,19 +98,13 @@ const EditProduct = () => {
 								/>
 							</div>
 						</div>
-						<label htmlFor='desc'>Description</label>
-						{/* <input
-							type='text'
-							value={data.description}
-							onChange={handleChange}
-							name='desc'
-							required
-						/> */}
+						<label htmlFor='description'>Description</label>
 
 						<textarea
 							className={formClasses.textarea}
 							defaultValue={data.description}
-							name='desc'
+							onChange={handleChange}
+							name='description'
 						/>
 
 						<label htmlFor='stock'>Stock</label>
@@ -113,7 +118,7 @@ const EditProduct = () => {
 						/>
 						<label htmlFor='image'>Image</label>
 						<input
-							// value={data.image}
+							// defaultValue={data.image}
 							type='file'
 							onChange={handleChange}
 							name='image'
@@ -122,9 +127,9 @@ const EditProduct = () => {
 						/>
 						<div className={formClasses.splitForm}>
 							<div>
-								<label htmlFor='categorieId'>Categorie Id</label>
+								<label htmlFor='categorie_id'>Categorie Id</label>
 								<select
-									name='categorieId'
+									name='categorie_id'
 									defaultValue={data.categorie_id}
 									className={formClasses.select}
 									onChange={handleChange}
@@ -137,9 +142,9 @@ const EditProduct = () => {
 								</select>
 							</div>
 							<div>
-								<label htmlFor='brandId'>Brand Id</label>
+								<label htmlFor='brand_id'>Brand Id</label>
 								<select
-									name='brandId'
+									name='brand_id'
 									defaultValue={data.brand_id}
 									className={formClasses.select}
 									onChange={handleChange}
@@ -153,7 +158,7 @@ const EditProduct = () => {
 							</div>
 						</div>
 						<div className={formClasses.btn}>
-							<input type='Submit' defaultValue='Add' form='payementForm' />
+							<input type='Submit' defaultValue='Add' />
 						</div>
 					</form>
 				</div>

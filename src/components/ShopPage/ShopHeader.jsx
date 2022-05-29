@@ -8,8 +8,8 @@ const ShopHeader = () => {
 			<div className={classes.sortBy}>
 				<div className={classes.sortBy}>
 					{/* <label htmlFor='sort'>Sort By</label> */}
-					<select name='sort' defaultValue={'default'} className={classes.sort}>
-						<option value='default'>Default</option>
+					<select name='sort' defaultValue={'sort'} className={classes.sort}>
+						<option value='sort'>Sort</option>
 						<option value='AtoZ'>Name A-Z</option>
 						<option value='ZtoA'>Name Z-A</option>
 						<option value='croi'>Price (Low to High)</option>
