@@ -13,15 +13,19 @@ const LeftNav = () => {
 	const location = useLocation();
 	const dispatch = useDispatch();
 
-	const { lastName, firstName } = useSelector((state) => state.auth);
+	const { lastname: lastName, firstname: firstName } = useSelector(
+		(state) => state.auth
+	);
+
 	return (
 		<nav className={classes.nav}>
 			<div className={classes.wrapper}>
-				<ul>
+				<ul className={classes.ul}>
 					<li className={classes.profile}>
 						{/* <img src='' alt='' /> */}
 						<FaUserCircle />
-						<p>{`${
+
+						<p className={classes.laptopOnly}>{`${
 							firstName?.charAt(0).toUpperCase() +
 							firstName?.slice(1).toLowerCase()
 						} ${
@@ -33,7 +37,7 @@ const LeftNav = () => {
 					>
 						<Link to=''>
 							<FiUser />
-							Profile Info
+							<span className={classes.laptopOnly}> Profile Info</span>
 						</Link>
 					</li>
 					<li
@@ -42,7 +46,8 @@ const LeftNav = () => {
 						}`}
 					>
 						<Link to='adresse'>
-							<FiHome /> Adresse
+							<FiHome />
+							<span className={classes.laptopOnly}> Adresse</span>
 						</Link>
 					</li>
 					<li
@@ -54,7 +59,7 @@ const LeftNav = () => {
 					>
 						<Link to=''>
 							<FiLogOut />
-							Logout
+							<span className={classes.laptopOnly}> Logout</span>
 						</Link>
 					</li>
 				</ul>

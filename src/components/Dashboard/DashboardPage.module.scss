@@ -4,6 +4,25 @@
 	display: flex;
 
 	gap: 2rem;
+
+	@media only screen and (max-width: 800px) {
+		display: grid;
+		.right {
+			width: auto !important;
+		}
+	}
+}
+.laptopOnly {
+	@media only screen and (max-width: 800px) {
+		display: none;
+	}
+}
+.ul {
+	@media only screen and (max-width: 800px) {
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+	}
 }
 .nav {
 	min-width: 225px;

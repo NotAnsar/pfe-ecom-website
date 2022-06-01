@@ -18,15 +18,17 @@ import { useDispatch, useSelector } from 'react-redux';
 const LeftNav = () => {
 	const location = useLocation();
 	const dispatch = useDispatch();
+	const auth = useSelector((state) => state.auth);
+
 	const { lastName, firstName } = useSelector((state) => state.auth);
 
 	return (
 		<nav className={classes.nav}>
 			<div className={classes.wrapper}>
-				<ul>
+				<ul className={classes.ul}>
 					<li className={classes.profile}>
 						<FaUserCircle />
-						<p>{`${
+						<p className={classes.laptopOnly}>{`${
 							firstName?.charAt(0).toUpperCase() +
 							firstName?.slice(1).toLowerCase()
 						} ${
@@ -38,7 +40,7 @@ const LeftNav = () => {
 					>
 						<Link to=''>
 							<FiGrid />
-							Dashboard
+							<span className={classes.laptopOnly}> Dashboard</span>
 						</Link>
 					</li>
 
@@ -49,7 +51,7 @@ const LeftNav = () => {
 					>
 						<Link to='users'>
 							<FiUser />
-							Users
+							<span className={classes.laptopOnly}> Users</span>
 						</Link>
 					</li>
 					<li
@@ -58,7 +60,7 @@ const LeftNav = () => {
 						}`}
 					>
 						<Link to='brands'>
-							<FiList /> Brands
+							<FiList /> <span className={classes.laptopOnly}> Brands</span>
 						</Link>
 					</li>
 					<li
@@ -69,7 +71,7 @@ const LeftNav = () => {
 					>
 						<Link to='categories'>
 							<FiList />
-							Categories
+							<span className={classes.laptopOnly}> Categorie</span>
 						</Link>
 					</li>
 					<li
@@ -79,13 +81,13 @@ const LeftNav = () => {
 					>
 						<Link to='products'>
 							<FiPackage />
-							Products
+							<span className={classes.laptopOnly}> Products</span>
 						</Link>
 					</li>
 					<li className={classes.logout} onClick={() => dispatch(logout())}>
 						<Link to=''>
 							<FiLogOut />
-							Logout
+							<span className={classes.laptopOnly}> LogOut</span>
 						</Link>
 					</li>
 				</ul>

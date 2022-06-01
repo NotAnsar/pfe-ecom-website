@@ -128,8 +128,8 @@ export const authSlice = createSlice({
 			state.id = action.payload.id;
 			state.role = action.payload.role;
 			state.email = action.payload.email;
-			state.firstName = action.payload.firstName;
-			state.lastName = action.payload.lastName;
+			state.firstName = action.payload.firstname;
+			state.lastName = action.payload.lastname;
 			state.error = action.payload.error;
 			state.loggedIn = action.payload.loggedIn;
 
@@ -140,8 +140,8 @@ export const authSlice = createSlice({
 			state.id = action.payload.id;
 			state.role = action.payload.role;
 			state.email = action.payload.email;
-			state.firstName = action.payload.firstName;
-			state.lastName = action.payload.lastName;
+			state.firstName = action.payload.firstname;
+			state.lastName = action.payload.lastname;
 			state.error = action.payload.error;
 			state.loggedIn = action.payload.loggedIn;
 

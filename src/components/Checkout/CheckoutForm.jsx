@@ -7,14 +7,19 @@ import classes from './Form.module.scss';
 
 const CheckoutForm = () => {
 	const { cart, total } = useSelector((state) => state.storageSlice);
-	const { id, lastname, firstname, email } = useSelector((state) => state.auth);
+	const {
+		id,
+		lastname: lastName,
+		firstname: firstName,
+		email,
+	} = useSelector((state) => state.auth);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	console.log(id, lastname, firstname, email);
+	console.log(id, lastName, firstName, email);
 	const [formData, setFormData] = useState({
 		email,
-		fName: firstname,
-		lName: lastname,
+		fName: firstName,
+		lName: lastName,
 		phone: '',
 		country: 'morocco',
 		adresse: '',

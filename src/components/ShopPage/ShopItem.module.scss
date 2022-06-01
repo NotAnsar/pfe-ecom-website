@@ -133,6 +133,9 @@
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
+				input:focus {
+					box-shadow: none;
+				}
 				svg {
 					height: 1.25rem;
 					width: 1.25rem;

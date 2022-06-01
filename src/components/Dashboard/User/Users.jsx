@@ -8,14 +8,19 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 const Users = () => {
 	const [users, setUsers] = useState(null);
+	const [url, setUrl] = useState('http://127.0.0.1:8000/api/users');
 
 	useEffect(() => {
 		const getUser = async () => {
 			try {
 				const res = await fetch('http://127.0.0.1:8000/api/users');
 				const data = await res.json();
-
-				setUsers(data);
+				const lastPage = data.last_page;
+				console.log(data);
+				console.log(lastPage);
+				console.log(data.next_page_url);
+				setUsers(data.data);
+				setUrl(data.next_page_url);
 			} catch (error) {
 				setUsers([]);
 			}

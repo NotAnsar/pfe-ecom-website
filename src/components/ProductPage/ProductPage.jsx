@@ -22,13 +22,11 @@ const ProductPage = ({ data }) => {
 		});
 	}, []);
 
-	if (data === undefined) {
-		return <ProductNotFound />;
-	}
+	if (data === undefined) return <ProductNotFound />;
 
 	if (error) return <div>Something wrong happend</div>;
 
-	if (data === null || brands.length === 0 || categories.length === 0)
+	if (data === null || brands.length === 0 || categories.length === 0) {
 		return (
 			<div style={{ height: '600px' }}>
 				<div className='load'>
@@ -37,6 +35,7 @@ const ProductPage = ({ data }) => {
 				</div>
 			</div>
 		);
+	}
 
 	brand = brands?.find((brand) => brand.brand_id === data.brand_id)?.brand;
 	brand = brand.charAt(0).toUpperCase() + brand.slice(1).toLowerCase();
