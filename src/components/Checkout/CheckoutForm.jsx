@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setCheckoutDone } from '../../store/wishListSlice';
@@ -7,60 +7,92 @@ import classes from './Form.module.scss';
 
 const CheckoutForm = () => {
 	const { cart, total } = useSelector((state) => state.storageSlice);
-	const {
-		id,
-		lastname: lastName,
-		firstname: firstName,
-		email,
-	} = useSelector((state) => state.auth);
+	const { id, lastName, firstName, email } = useSelector((state) => state.auth);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	console.log(id, lastName, firstName, email);
+	const url = 'http://127.0.0.1:8000/api';
+	const [adrFound, setAdrFound] = useState(false);
+
 	const [formData, setFormData] = useState({
 		email,
-		fName: firstName,
-		lName: lastName,
-		phone: '',
-		country: 'morocco',
+		firstName,
+		lastName,
+		user_id: id,
+		telephone: '',
 		adresse: '',
-		city: '',
-		zcode: '',
+		zipCode: '',
+		ville: '',
+		country: 'morocco',
 	});
+
+	useEffect(() => {
+		getAdresse();
+		async function getAdresse() {
+			try {
+				const res = await fetch(`${url}/adresses/${id}`);
+
+				const adr = await res.json();
+
+				setFormData((prev) => ({
+					...prev,
+					telephone: adr.telephone,
+					adresse: adr.adresse,
+					zipCode: adr.zipCode,
+					ville: adr.ville,
+				}));
+
+				setAdrFound(true);
+			} catch (error) {
+				setAdrFound(false);
+			}
+		}
+	}, []);
 
 	const formHandler = (e) => {
 		e.preventDefault();
 		if (
 			formData.email.trim() === '' ||
-			formData.fName.trim() === '' ||
-			formData.lName.trim() === '' ||
-			formData.phone.trim() === '' ||
+			formData.firstName.trim() === '' ||
+			formData.lastName.trim() === '' ||
+			formData.telephone.trim() === '' ||
 			formData.country.trim() === '' ||
 			formData.adresse.trim() === '' ||
-			formData.city.trim() === '' ||
-			formData.zcode.trim() === ''
+			formData.ville.trim() === '' ||
+			formData.zipCode.trim() === ''
 		) {
 			alert('Fill Out All The Fields');
 			return;
 		}
-		dispatch(setCheckoutDone());
 
-		const adresse = {
-			telephone: formData.phone,
-			adresse: formData.adresse,
-			ville: formData.city,
+		dispatch(setCheckoutDone());
+		const created_at = new Date().toISOString();
+
+		const commands = cart.map((e) => ({
+			product_id: e.product_id,
 			user_id: id,
-			zipCode: formData.zcode,
-		};
+			created_at,
+			quantity: e.qte,
+		}));
+
+		console.log(commands);
 
 		const user = {
-			email: formData.email,
-			fName: formData.fName,
-			lName: formData.lName,
-			adresse,
-			at: new Date().toISOString(),
-			bought: cart,
-			total,
+			user: {
+				email: formData.email,
+				firstName: formData.firstName,
+				lastName: formData.lastName,
+				user_id: id,
+			},
+			adresse: {
+				telephone: formData.telephone,
+				adresse: formData.adresse,
+				ville: formData.ville,
+				user_id: id,
+				zipCode: formData.zipCode,
+			},
+			commands,
 		};
+
 		navigate('/payement', { state: user });
 	};
 
@@ -78,23 +110,23 @@ const CheckoutForm = () => {
 					<form id='checkoutForm' onSubmit={formHandler}>
 						<div className={classes.splitForm}>
 							<div>
-								<label htmlFor='fName'>First Name</label>
+								<label htmlFor='firstName'>First Name</label>
 								<input
 									type='text'
 									onChange={handleChange}
-									name='fName'
+									name='firstName'
 									required
-									defaultValue={formData.fName}
+									defaultValue={formData.firstName}
 									disabled
 								/>
 							</div>
 							<div>
-								<label htmlFor='lName'>Last Name</label>
+								<label htmlFor='lastName'>Last Name</label>
 								<input
 									type='text'
 									onChange={handleChange}
-									name='lName'
-									defaultValue={formData.lName}
+									name='lastName'
+									defaultValue={formData.lastName}
 									disabled
 									required
 								/>
@@ -109,15 +141,16 @@ const CheckoutForm = () => {
 							defaultValue={formData.email}
 							disabled
 						/>
-						<label htmlFor='phone'>Mobile Telephone</label>
+						<label htmlFor='telephone'>Mobile Telephone</label>
 						<input
 							type='tel'
 							onChange={handleChange}
-							name='phone'
+							name='telephone'
 							maxLength='10'
 							minLength='10'
-							defaultValue={formData.phone}
+							defaultValue={formData.telephone}
 							required
+							disabled={adrFound ? 'disabled' : ''}
 						/>
 						<label htmlFor='adresse'>Adresse</label>
 						<input
@@ -127,33 +160,36 @@ const CheckoutForm = () => {
 							name='adresse'
 							minLength='6'
 							required
+							disabled={adrFound ? 'disabled' : ''}
 						/>
 						<div className={classes.splitForm}>
 							<div>
-								<label htmlFor='city'>City</label>
+								<label htmlFor='ville'>City</label>
 								<input
 									type='text'
 									onChange={handleChange}
-									defaultValue={formData.city}
-									name='city'
+									defaultValue={formData.ville}
+									name='ville'
 									minLength='3'
 									required
+									disabled={adrFound ? 'disabled' : ''}
 								/>
 							</div>
 							<div>
-								<label htmlFor='zcode'>Zip Code</label>
+								<label htmlFor='zipCode'>Zip Code</label>
 								<input
 									type='number'
 									onChange={handleChange}
-									defaultValue={formData.zcode}
-									name='zcode'
+									defaultValue={formData.zipCode}
+									name='zipCode'
 									minLength='3'
 									required
+									disabled={adrFound ? 'disabled' : ''}
 								/>
 							</div>
 						</div>
 
-						<label htmlFor='city'>Country</label>
+						<label htmlFor='country'>Country</label>
 						<input
 							type='text'
 							onChange={handleChange}

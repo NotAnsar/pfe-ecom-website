@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const url = 'http://127.0.0.1:8000/api';
+
 export const Login = (email, password) => {
 	return async (dispatch) => {
 		async function Login() {
@@ -62,33 +63,21 @@ export const Register = (email, password, firstName, lastName, role) => {
 	};
 };
 
-export const addAdresse = (telephone, adresse, ville, user_id, zipCode) => {
+export const getAdresse = (id) => {
 	return async (dispatch) => {
-		async function addAdresse() {
-			const res = await fetch(`${url}/adresses`, {
-				method: 'POST',
-				headers: {
-					Accept: 'application/json',
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({
-					telephone,
-					adresse,
-					ville,
-					user_id,
-					zipCode,
-				}),
-			});
+		async function getAdresse() {
+			const res = await fetch(`${url}/adresses/${id}`);
 
-			const adresse = await res.json();
+			const adr = await res.json();
 
-			return { adresse };
+			return { ...adr, adrFound: true };
 		}
+
 		try {
-			dispatch(authSlice.actions.addAdr(await addAdresse()));
+			dispatch(authSlice.actions.getAdr(await getAdresse()));
 		} catch (error) {
 			console.log(error);
-			return { adresse: null };
+			return { adrFound: false };
 		}
 	};
 };
@@ -116,7 +105,13 @@ const initialState = getItem('user')
 			lastName: '',
 			email: '',
 			error: false,
-			adresse: null,
+			adresse: {
+				telephone: '',
+				adresse: '',
+				zipCode: '',
+				ville: '',
+			},
+			adrFound: null,
 	  };
 
 export const authSlice = createSlice({
@@ -128,30 +123,57 @@ export const authSlice = createSlice({
 			state.id = action.payload.id;
 			state.role = action.payload.role;
 			state.email = action.payload.email;
-			state.firstName = action.payload.firstname;
-			state.lastName = action.payload.lastname;
+			state.firstName = action.payload.firstname || action.payload.firstName;
+			state.lastName = action.payload.lastname || action.payload.lastName;
 			state.error = action.payload.error;
 			state.loggedIn = action.payload.loggedIn;
 
-			localStorage.setItem('user', JSON.stringify(action.payload));
+			localStorage.setItem(
+				'user',
+				JSON.stringify({
+					id: state.id,
+					role: state.role,
+					email: state.email,
+					firstName: state.firstName,
+					lastName: state.lastName,
+					error: state.error,
+					loggedIn: state.loggedIn,
+				})
+			);
 		},
 		getRegister: (state, action) => {
 			console.log(action.payload);
 			state.id = action.payload.id;
 			state.role = action.payload.role;
 			state.email = action.payload.email;
-			state.firstName = action.payload.firstname;
-			state.lastName = action.payload.lastname;
+			state.firstName = action.payload.firstname || action.payload.firstName;
+			state.lastName = action.payload.lastname || action.payload.lastName;
 			state.error = action.payload.error;
 			state.loggedIn = action.payload.loggedIn;
 
-			localStorage.setItem('user', JSON.stringify(action.payload));
+			localStorage.setItem(
+				'user',
+				JSON.stringify({
+					id: state.id,
+					role: state.role,
+					email: state.email,
+					firstName: state.firstName,
+					lastName: state.lastName,
+					error: state.error,
+					loggedIn: state.loggedIn,
+				})
+			);
 		},
 		addAdr: (state, action) => {
 			// state.adresse = action.payload.adresse;
 		},
 		getAdr: (state, action) => {
-			// state.adresse = action.payload.adresse;
+			if (action.payload.adrFound) {
+				state.adresse.telephone = action.payload.telephone;
+				state.adresse.adresse = action.payload.adresse;
+				state.adresse.zipCode = action.payload.zipCode;
+				state.adresse.ville = action.payload.ville;
+			}
 		},
 		logout: (state) => {
 			state.id = null;

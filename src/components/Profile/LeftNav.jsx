@@ -1,21 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import classes from '../Dashboard/DashboardPage.module.scss';
 
 import { FiUser, FiHome, FiLogOut } from 'react-icons/fi';
 import { FaUserCircle } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
-import { logout } from '../../store/authentication';
+import { getAdresse, logout } from '../../store/authentication';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCarts } from '../../store/cartSlice';
 
 const LeftNav = () => {
 	const location = useLocation();
 	const dispatch = useDispatch();
-
-	const { lastname: lastName, firstname: firstName } = useSelector(
-		(state) => state.auth
-	);
+	const { lastName, firstName } = useSelector((state) => state.auth);
 
 	return (
 		<nav className={classes.nav}>

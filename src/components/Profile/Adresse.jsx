@@ -1,42 +1,113 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import formClasses from '../Forms/Form.module.scss';
 import classes from '../Dashboard/DashboardPage.module.scss';
 import { useSelector } from 'react-redux';
+
 const Adresse = () => {
-	const [formData, setFormData] = useState({
+	const { id } = useSelector((state) => state.auth);
+	const url = 'http://127.0.0.1:8000/api';
+	const [adrFound, setAdrFound] = useState(false);
+	const [adresse, setAdresse] = useState({
 		telephone: '',
 		adresse: '',
 		zipCode: '',
 		ville: '',
+		user_id: id,
 	});
+
+	useEffect(() => {
+		getAdresse();
+		async function getAdresse() {
+			try {
+				const res = await fetch(`${url}/adresses/${id}`);
+
+				const adr = await res.json();
+
+				setAdresse({
+					telephone: adr.telephone,
+					adresse: adr.adresse,
+					zipCode: adr.zipCode,
+					ville: adr.ville,
+					user_id: id,
+				});
+				setAdrFound(true);
+			} catch (error) {
+				setAdrFound(false);
+			}
+		}
+	}, []);
+
+	// const [formData, setFormData] = useState({
+	// 	telephone: adresse ? adresse.telephone : '',
+	// 	adresse: adresse ? adresse.adresse : '',
+	// 	zipCode: adresse ? adresse.zipCode : '',
+	// 	ville: adresse ? adresse.ville : '',
+	// });
 
 	const formHandler = (e) => {
 		e.preventDefault();
+
 		if (
-			formData.adresse.trim() === '' ||
-			formData.zipCode.trim() === '' ||
-			formData.ville.trim() === ''
+			adresse.adresse.trim() === '' ||
+			adresse.telephone.trim() === '' ||
+			adresse.ville.trim() === ''
 		) {
 			alert('Fill Out All The Fields');
 			return;
 		}
 
-		const adresse = {
-			telephone: formData.telephone,
-			adresse: formData.adresse,
-			zipCode: formData.zipCode,
-			ville: formData.ville,
-			id: id,
-		};
-		console.log(adresse);
+		async function addAdresse() {
+			const req = await fetch(`${url}/adresses`, {
+				method: 'POST',
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					telephone: adresse.telephone,
+					adresse: adresse.adresse,
+					zipCode: adresse.zipCode,
+					ville: adresse.ville,
+					user_id: adresse.user_id,
+				}),
+			});
+
+			const res = await req.json();
+			alert(res.result);
+		}
+
+		async function updateAdresse() {
+			const req = await fetch(`${url}/adresses`, {
+				method: 'PUT',
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					telephone: adresse.telephone,
+					adresse: adresse.adresse,
+					zipCode: adresse.zipCode,
+					ville: adresse.ville,
+					user_id: adresse.user_id,
+				}),
+			});
+
+			const res = await req.json();
+			alert(res.result);
+		}
+		if (adrFound) {
+			updateAdresse();
+		} else {
+			addAdresse();
+		}
 	};
 
 	const handleChange = (e) => {
 		let value = e.target.value;
 		let name = e.target.name;
 
-		setFormData((prev) => ({ ...prev, [name]: value }));
+		setAdresse((prev) => ({ ...prev, [name]: value }));
 	};
 
 	return (
@@ -49,14 +120,15 @@ const Adresse = () => {
 						<textarea
 							style={{ height: '100px' }}
 							className={formClasses.textarea}
-							defaultValue={formData.adresse}
+							defaultValue={adresse.adresse}
 							name='adresse'
+							onChange={handleChange}
 						/>
 						<div className={formClasses.splitForm}>
 							<div>
 								<label htmlFor='zipCode'>Zip code</label>
 								<input
-									defaultValue={formData.zipCode}
+									defaultValue={adresse.zipCode}
 									type='number'
 									onChange={handleChange}
 									name='zipCode'
@@ -66,7 +138,7 @@ const Adresse = () => {
 							<div>
 								<label htmlFor='telephone'>Telephone</label>
 								<input
-									defaultValue={formData.telephone}
+									defaultValue={adresse.telephone}
 									type='tel'
 									onChange={handleChange}
 									name='telephone'
@@ -78,13 +150,18 @@ const Adresse = () => {
 						<label htmlFor='ville'>City</label>
 						<input
 							type='text'
-							defaultValue={formData.ville}
+							defaultValue={adresse.ville}
 							onChange={handleChange}
 							name='ville'
 							required
 						/>
 						<div className={formClasses.btn}>
-							<input type='Submit' defaultValue='Add Adresse' />
+							<input
+								type='Submit'
+								defaultValue={`${
+									adrFound ? 'Update Adresse' : 'Add Adresse'
+								}  `}
+							/>
 						</div>
 					</form>
 				</div>

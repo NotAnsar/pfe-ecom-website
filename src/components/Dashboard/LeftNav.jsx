@@ -18,9 +18,10 @@ import { useDispatch, useSelector } from 'react-redux';
 const LeftNav = () => {
 	const location = useLocation();
 	const dispatch = useDispatch();
-	const auth = useSelector((state) => state.auth);
 
 	const { lastName, firstName } = useSelector((state) => state.auth);
+	const auth = useSelector((state) => state.auth);
+	console.log(auth);
 
 	return (
 		<nav className={classes.nav}>

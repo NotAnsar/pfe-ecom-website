@@ -10,8 +10,7 @@ import Summary from './Summary';
 
 const Checkout = ({ type }) => {
 	const { loggedIn, role } = useSelector((state) => state.auth);
-	const auth = useSelector((state) => state.auth);
-	console.log(auth);
+
 	let navigate = useNavigate();
 
 	useEffect(() => {
