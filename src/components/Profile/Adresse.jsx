@@ -74,7 +74,8 @@ const Adresse = () => {
 			});
 
 			const res = await req.json();
-			alert(res.result);
+			console.log(res);
+			alert(res.Result);
 		}
 
 		async function updateAdresse() {

@@ -3,19 +3,14 @@ import React, { useEffect, useState } from 'react';
 import classes from './ShopItem.module.scss';
 import { IoIosArrowUp } from 'react-icons/io';
 
-const Brand = ({ title, data }) => {
+const Brand = ({ title, data, selected }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
-	const [isChecked, setIsChecked] = useState(
-		new Array(data.length).fill(false)
-	);
+	const [isChecked, setIsChecked] = useState(0);
 
-	const handleOnChange = (position) => {
-		const updatedCheckedState = isChecked.map((item, index) =>
-			index === position ? !item : item
-		);
-
-		setIsChecked(updatedCheckedState);
+	const handleOnChange = (id) => {
+		selected(id);
+		setIsChecked(id);
 	};
 
 	return (
@@ -42,8 +37,11 @@ const Brand = ({ title, data }) => {
 								type='radio'
 								name={title}
 								value={title === 'Brand' ? d.brand_id : d.categorie_id}
-								checked={isChecked[i]}
-								onChange={() => handleOnChange(i)}
+								onChange={() =>
+									handleOnChange(
+										title === 'Brand' ? d.brand_id : d.categorie_id
+									)
+								}
 							/>
 						</li>
 					))}

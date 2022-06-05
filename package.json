@@ -14,6 +14,7 @@
     "react-icons": "^4.3.1",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
+    "react-router-pagination": "^2.2.183",
     "sass": "^1.49.8"
   },
   "devDependencies": {

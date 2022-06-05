@@ -7,7 +7,9 @@ import classes from './Form.module.scss';
 
 const CheckoutForm = () => {
 	const { cart, total } = useSelector((state) => state.storageSlice);
-	const { id, lastName, firstName, email } = useSelector((state) => state.auth);
+	const { id, lastName, firstName, email, loggedIn } = useSelector(
+		(state) => state.auth
+	);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const url = 'http://127.0.0.1:8000/api';
@@ -26,7 +28,7 @@ const CheckoutForm = () => {
 	});
 
 	useEffect(() => {
-		getAdresse();
+		if (loggedIn) getAdresse();
 		async function getAdresse() {
 			try {
 				const res = await fetch(`${url}/adresses/${id}`);
@@ -55,10 +57,8 @@ const CheckoutForm = () => {
 			formData.firstName.trim() === '' ||
 			formData.lastName.trim() === '' ||
 			formData.telephone.trim() === '' ||
-			formData.country.trim() === '' ||
 			formData.adresse.trim() === '' ||
-			formData.ville.trim() === '' ||
-			formData.zipCode.trim() === ''
+			formData.ville.trim() === ''
 		) {
 			alert('Fill Out All The Fields');
 			return;

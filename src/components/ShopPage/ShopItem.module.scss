@@ -188,3 +188,28 @@
 		transform: translateY(0px);
 	}
 }
+
+.pagination {
+	.page {
+		margin: 0 0.75rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.pagenum {
+		font-size: 18px;
+		font-weight: 300;
+		margin: 0 0.7rem;
+	}
+	svg {
+		display: block;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 1px;
+		height: 1.75rem;
+		width: 1.75rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
