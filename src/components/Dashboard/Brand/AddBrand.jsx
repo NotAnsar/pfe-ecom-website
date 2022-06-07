@@ -3,10 +3,12 @@ import React, { useRef, useState } from 'react';
 import classes from '../DashboardPage.module.scss';
 import formClasses from '../../Forms/Form.module.scss';
 import { useSelector } from 'react-redux';
+import url from '../../../store/url';
+import { useNavigate } from 'react-router-dom';
 
 const AddBrand = () => {
 	const brand = useRef(null);
-
+	let navigate = useNavigate();
 	const formHandler = (e) => {
 		e.preventDefault();
 		if (brand.current.value.trim() === '') {
@@ -14,7 +16,26 @@ const AddBrand = () => {
 			return;
 		}
 
-		console.log(brand.current.value);
+		async function addBrand() {
+			try {
+				const res = await fetch(`${url}/brands`, {
+					method: 'POST',
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({ brand: brand.current.value }),
+				});
+
+				const d = await res.json();
+
+				alert(d.Result);
+				navigate('/dashboard/brands');
+			} catch (error) {
+				console.log(error);
+			}
+		}
+		addBrand();
 	};
 
 	return (

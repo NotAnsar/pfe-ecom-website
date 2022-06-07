@@ -1,16 +1,30 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import classes from '../DashboardPage.module.scss';
 import formClasses from '../../Forms/Form.module.scss';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import { useNavigate, useParams } from 'react-router-dom';
+import url from '../../../store/url';
 
 const EditBrand = () => {
-	const { brands } = useSelector((state) => state.products);
 	const { id } = useParams();
-	let data = null;
+	let navigate = useNavigate();
+	const [brands, setBrands] = useState(null);
 
-	if (brands.length !== 0) data = brands?.find((d) => d.brand_id === +id);
+	useEffect(() => {
+		const getBrands = async () => {
+			try {
+				const res = await fetch(`${url}/brands/${id}`);
+				const data = await res.json();
+
+				setBrands(data);
+			} catch (error) {
+				setBrands([]);
+			}
+		};
+		getBrands();
+	}, []);
+
 	const brand = useRef(null);
 
 	const formHandler = (e) => {
@@ -20,10 +34,37 @@ const EditBrand = () => {
 			return;
 		}
 
-		console.log(brand.current.value);
+		async function updateBrand() {
+			try {
+				const res = await fetch(`${url}/brands`, {
+					method: 'PUT',
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({ brand_id: id, brand: brand.current.value }),
+				});
+
+				const d = await res.json();
+
+				alert(d.result);
+				navigate('/dashboard/brands');
+			} catch (error) {
+				console.log(error);
+			}
+		}
+		updateBrand();
 	};
 
-	if (data === null) return <p>Loading</p>;
+	if (brands === null)
+		return (
+			<div className={classes.right}>
+				<div className='load'>
+					{/* <FiLoader /> */}
+					<AiOutlineLoading3Quarters />
+				</div>
+			</div>
+		);
 
 	return (
 		<div className={classes.right}>
@@ -35,7 +76,7 @@ const EditBrand = () => {
 							<label htmlFor='name'>Brand Name</label>
 							<input
 								ref={brand}
-								defaultValue={data.brand}
+								defaultValue={brands.brand}
 								type='text'
 								name='name'
 								required

@@ -2,31 +2,35 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import classes from '../DashboardPage.module.scss';
+import paginationclasses from '../../ShopPage/ShopItem.module.scss';
 
 import { FiLoader, FiEdit } from 'react-icons/fi';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import url from '../../../store/url';
 
 const Users = () => {
 	const [users, setUsers] = useState(null);
-	const [url, setUrl] = useState('http://127.0.0.1:8000/api/users');
+	const [pageNum, setPageNum] = useState(0);
+
+	const [currentPage, setCurrentPage] = useState(1);
 
 	useEffect(() => {
-		const getUser = async () => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+		async function getUsers(page = 1) {
 			try {
-				const res = await fetch('http://127.0.0.1:8000/api/users');
-				const data = await res.json();
-				const lastPage = data.last_page;
-				console.log(data);
-				console.log(lastPage);
-				console.log(data.next_page_url);
-				setUsers(data.data);
-				setUrl(data.next_page_url);
-			} catch (error) {
-				setUsers([]);
-			}
-		};
-		getUser();
-	}, []);
+				const res = await fetch(`${url}/users?page=${page}`);
+
+				const prd = await res.json();
+				setPageNum(prd.last_page);
+				setUsers(prd.data);
+			} catch (error) {}
+		}
+		getUsers(currentPage);
+	}, [currentPage]);
 
 	if (users === null)
 		return (
@@ -84,6 +88,26 @@ const Users = () => {
 						})}
 				</tbody>
 			</table>
+			<div className={paginationclasses.pagination}>
+				{users && pageNum > 0 && (
+					<span className={paginationclasses.page}>
+						<FiChevronLeft
+							onClick={() => {
+								if (currentPage !== 1) return setCurrentPage(currentPage - 1);
+							}}
+						/>
+						<p
+							className={paginationclasses.pagenum}
+						>{`${currentPage}/${pageNum}`}</p>
+						<FiChevronRight
+							onClick={() => {
+								if (currentPage < pageNum)
+									return setCurrentPage(currentPage + 1);
+							}}
+						/>
+					</span>
+				)}
+			</div>
 		</div>
 	);
 };

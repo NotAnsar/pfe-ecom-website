@@ -15,8 +15,8 @@ const Checkout = ({ type }) => {
 
 	useEffect(() => {
 		if (!loggedIn) navigate('/login');
-		if (role == 'admin') navigate('/dashboard');
-	}, [loggedIn]);
+		if (role === 'admin') navigate('/dashboard');
+	}, [loggedIn, role]);
 
 	return (
 		<div className={classes.container}>

@@ -25,7 +25,31 @@ const AddUser = () => {
 			return;
 		}
 
-		console.log(formData);
+		async function Register() {
+			try {
+				const url = 'http://127.0.0.1:8000/api';
+				const res = await fetch(`${url}/register`, {
+					method: 'POST',
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(formData),
+				});
+
+				const register = await res.json();
+
+				if (register.message && register.message.includes('SQLSTATE[23000]:'))
+					throw new Error('User already exists');
+
+				if (!register) throw new Error('can not add this user');
+
+				alert('user Added');
+			} catch (error) {
+				alert(error.message);
+			}
+		}
+		Register();
 	};
 
 	const handleChange = (e) => {

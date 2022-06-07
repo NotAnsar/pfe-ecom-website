@@ -1,31 +1,30 @@
 import React from 'react';
 import classes from './ShopItem.module.scss';
 
-const ShopHeader = () => {
+const ShopHeader = ({ getSort }) => {
+	const handleChange = (e) => {
+		let value = e.target.value;
+
+		getSort(value.split(' '));
+	};
+
 	return (
 		<div className={classes.shopAll}>
 			<h1>Shop All</h1>
 			<div className={classes.sortBy}>
 				<div className={classes.sortBy}>
-					{/* <label htmlFor='sort'>Sort By</label> */}
-					<select name='sort' defaultValue={'sort'} className={classes.sort}>
-						<option value='sort'>Sort</option>
-						<option value='AtoZ'>Name A-Z</option>
-						<option value='ZtoA'>Name Z-A</option>
-						<option value='croi'>Price (Low to High)</option>
-						<option value='decroi'>Price (High to Low)</option>
+					<select
+						defaultValue={''}
+						onChange={handleChange}
+						className={classes.sort}
+					>
+						<option value=''>Sort</option>
+						<option value='name asc'>Name A-Z</option>
+						<option value='name desc'>Name Z-A</option>
+						<option value='price asc'>Price (Low to High)</option>
+						<option value='price desc'>Price (High to Low)</option>
 					</select>
 				</div>
-				{/* <div className={classes.sortBy}>
-					<label htmlFor='show'>Show</label>
-					<select name='show' className={classes.show} defaultValue={'9'}>
-						<option value='6'>6</option>
-						<option value='9'>9</option>
-						<option value='12'>12</option>
-						<option value='15'>15</option>
-						<option value='18'>18</option>
-					</select>
-				</div> */}
 			</div>
 		</div>
 	);

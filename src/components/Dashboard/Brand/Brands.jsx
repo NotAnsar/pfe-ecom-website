@@ -1,12 +1,40 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import classes from '../DashboardPage.module.scss';
 import { FiEdit } from 'react-icons/fi';
+import url from '../../../store/url';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 const Brands = () => {
-	const { brands } = useSelector((state) => state.products);
+	const [brands, setBrands] = useState(null);
+
+	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+
+		async function getBrands() {
+			try {
+				const res = await fetch(`${url}/brands`);
+
+				const prd = await res.json();
+				setBrands(prd);
+			} catch (error) {}
+		}
+		getBrands();
+	}, []);
+
+	if (brands === null)
+		return (
+			<div className={classes.right}>
+				<div className='load'>
+					{/* <FiLoader /> */}
+					<AiOutlineLoading3Quarters />
+				</div>
+			</div>
+		);
 
 	return (
 		<div className={classes.right}>
@@ -24,12 +52,8 @@ const Brands = () => {
 						</th>
 					</tr>
 				</thead>
+
 				<tbody>
-					{!brands.length === 0 && (
-						<div className='loading'>
-							<img src='./images/loading.gif' />
-						</div>
-					)}
 					{brands &&
 						brands.map((b) => {
 							return (

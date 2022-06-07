@@ -3,18 +3,19 @@ import React, { useEffect, useState } from 'react';
 import classes from '../DashboardPage.module.scss';
 import formClasses from '../../Forms/Form.module.scss';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import url from '../../../store/url';
 
 const EditUser = () => {
 	const { id } = useParams();
-
+	let navigate = useNavigate();
 	const [users, setUsers] = useState(null);
 
 	useEffect(() => {
 		const getUser = async () => {
 			try {
-				const res = await fetch(`http://127.0.0.1:8000/api/users/${id}`);
+				const res = await fetch(`${url}/users/${id}`);
 				const data = await res.json();
 
 				setUsers(data);
@@ -30,7 +31,6 @@ const EditUser = () => {
 		if (
 			users.firstName.trim() === '' ||
 			users.lastName.trim() === '' ||
-			users.password.trim() === '' ||
 			users.email.trim() === ''
 		) {
 			alert('Fill Out All The Fields');
@@ -43,8 +43,26 @@ const EditUser = () => {
 			password: users.password,
 			email: users.email,
 			role: users.role,
+			user_id: id,
 		};
-		console.log(user);
+
+		async function update() {
+			const req = await fetch(`${url}/users`, {
+				method: 'PUT',
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(user),
+			});
+
+			const res = await req.json();
+
+			alert(res.result);
+
+			navigate('/dashboard/users');
+		}
+		update();
 	};
 
 	const handleChange = (e) => {

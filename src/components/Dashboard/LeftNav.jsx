@@ -21,7 +21,6 @@ const LeftNav = () => {
 
 	const { lastName, firstName } = useSelector((state) => state.auth);
 	const auth = useSelector((state) => state.auth);
-	console.log(auth);
 
 	return (
 		<nav className={classes.nav}>
