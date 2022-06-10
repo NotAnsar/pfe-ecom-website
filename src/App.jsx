@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Product from './pages/Product';
 import { Payement } from './pages/Payement';
 import Dashboard from './pages/Dashboard';
+import { OrderConfirm } from './pages/OrderConfirm';
 
 function App() {
 	const dispatch = useDispatch();
@@ -38,15 +39,14 @@ function App() {
 				<Route path='/' element={<Home />} />
 				<Route path='/shop' element={<Shop />} />
 				{cart.length > 0 && <Route path='/checkout' element={<CheckOut />} />}
-				{cart.length > 0 && checkoutDone && (
-					<Route path='/payement' element={<Payement />} />
+				{checkoutDone && (
+					<Route path='/order-confirmation' element={<OrderConfirm />} />
 				)}
-
+				{/* <Route path='/order-confirmation' element={<Payement />} /> */}
 				<Route path='/login' element={<Login />} />
 				<Route path='/register' element={<Register />} />
 				<Route path='/profile/*' element={<Profile />} />
 				<Route path='/dashboard/*' element={<Dashboard />} />
-
 				<Route path='/product/:id' element={<Product />} />
 				<Route path='*' element={<Error />} />
 			</Routes>

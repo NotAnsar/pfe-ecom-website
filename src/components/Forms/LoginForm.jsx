@@ -6,7 +6,10 @@ import { Login } from '../../store/authentication';
 import classes from './Form.module.scss';
 const LoginForm = () => {
 	const [formData, setFormData] = useState({ email: '', password: '' });
-	const { loggedIn, role } = useSelector((state) => state.auth);
+	const { loggedIn, role, error, errorMsg } = useSelector(
+		(state) => state.auth
+	);
+	const [errorr, setError] = useState({ error: false, message: '' });
 	const dispatch = useDispatch();
 	let navigate = useNavigate();
 
@@ -19,11 +22,13 @@ const LoginForm = () => {
 				navigate('/dashboard');
 			}
 		}
-	}, [loggedIn]);
+		if (error) {
+			setError({ error: error, message: errorMsg });
+		}
+	}, [loggedIn, error, errorMsg]);
 
 	const formHandler = (e) => {
 		e.preventDefault();
-		console.log(formData.email, formData.password);
 		if (!formData.email.includes('@') || !formData.password.length > 4) return;
 
 		dispatch(Login(formData.email, formData.password));
@@ -37,6 +42,7 @@ const LoginForm = () => {
 	return (
 		<div className={classes.login}>
 			<div className={classes.container}>
+				{errorr.error && <p className={classes.alert}>{errorr.message}.</p>}
 				<div className={classes.form}>
 					<form onSubmit={formHandler}>
 						<label htmlFor='email'>Email</label>
@@ -45,6 +51,7 @@ const LoginForm = () => {
 							name='email'
 							onChange={handleChange}
 							value={formData.email}
+							pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'
 							required
 						/>
 						<label htmlFor='password'>Password</label>

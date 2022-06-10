@@ -85,7 +85,13 @@ const AddUser = () => {
 							</div>
 						</div>
 						<label htmlFor='email'>Email</label>
-						<input type='email' onChange={handleChange} name='email' required />
+						<input
+							type='email'
+							onChange={handleChange}
+							pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'
+							name='email'
+							required
+						/>
 						<label htmlFor='Password'>Password</label>
 						<input
 							type='password'

@@ -1,0 +1,66 @@
+.container {
+	max-width: 1200px;
+	margin: 2rem auto;
+}
+
+.check {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: 1rem 0.5rem;
+	text-align: center;
+	margin: 0 1rem 2rem 1rem;
+	border-radius: 2px;
+	background-color: black;
+	color: white;
+
+	p {
+		font-weight: 500;
+		font-size: 1.5rem;
+		margin-left: 1rem;
+	}
+	svg {
+		height: 1.5rem;
+		width: 1.5rem;
+	}
+	@media screen and (max-width: 500px) {
+		p {
+			font-size: 1.25rem;
+			margin-left: 0.7rem;
+		}
+		@media screen and (max-width: 380px) {
+			p {
+				font-size: 0.9rem;
+				margin-left: 0.5rem;
+			}
+		}
+	}
+}
+
+.thanking {
+	text-align: center;
+	margin-bottom: 4rem;
+	h3 {
+		margin-top: 1rem;
+		margin-bottom: 2rem;
+		font-weight: 500;
+	}
+	p {
+		font-weight: 300;
+		font-size: 0.9rem;
+		margin: 0 auto;
+		margin-bottom: 3rem;
+		width: 70%;
+	}
+	a {
+		background: black;
+		color: white;
+		padding: 1rem 2rem;
+		font-size: 1rem;
+		font-weight: 700;
+		margin-top: 1rem;
+		// display: block;
+		border-radius: 3px;
+	}
+}

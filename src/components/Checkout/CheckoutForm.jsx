@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { clearCarts } from '../../store/cartSlice';
 import { setCheckoutDone } from '../../store/wishListSlice';
 
 import classes from './Form.module.scss';
@@ -64,7 +65,6 @@ const CheckoutForm = () => {
 			return;
 		}
 
-		dispatch(setCheckoutDone());
 		const created_at = new Date().toISOString();
 
 		const commands = cart.map((e) => ({
@@ -92,8 +92,9 @@ const CheckoutForm = () => {
 			},
 			commands,
 		};
-
-		navigate('/payement', { state: user });
+		dispatch(setCheckoutDone());
+		dispatch(clearCarts());
+		navigate('/order-confirmation', { state: user });
 	};
 
 	const handleChange = (e) => {

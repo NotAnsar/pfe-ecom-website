@@ -15,12 +15,18 @@ const RegisterForm = () => {
 		role: 'user',
 	});
 	const dispatch = useDispatch();
-	const { loggedIn, role } = useSelector((state) => state.auth);
+	const { loggedIn, role, error, errorMsg } = useSelector(
+		(state) => state.auth
+	);
+	const [errorr, setError] = useState({ error: false, message: '' });
 	let navigate = useNavigate();
 
 	useEffect(() => {
 		if (loggedIn && role === 'user') navigate('/profile');
-	}, [loggedIn]);
+		if (error) {
+			setError({ error: error, message: errorMsg });
+		}
+	}, [loggedIn, error, errorMsg]);
 
 	const formHandler = (e) => {
 		e.preventDefault();
@@ -28,14 +34,17 @@ const RegisterForm = () => {
 		if (
 			!formData.email.includes('@') ||
 			!formData.password.length > 6 ||
-			formData.cpassword !== formData.password ||
 			formData.fName.trim() === '' ||
 			formData.lName.trim() === '' ||
-			formData.role !== 'user'
-		)
-			return;
+			formData.role !== 'user' ||
+			formData.cpassword !== formData.password
+		) {
+			if (formData.cpassword !== formData.password)
+				setError({ error: true, message: 'Passwords must match' });
 
-		console.log(formData);
+			return;
+		}
+
 		dispatch(
 			Register(
 				formData.email.trim(),
@@ -56,6 +65,7 @@ const RegisterForm = () => {
 	return (
 		<div className={classes.login}>
 			<div className={classes.container}>
+				{errorr.error && <p className={classes.alert}>{errorr.message}.</p>}
 				<div className={classes.form}>
 					<form onSubmit={formHandler}>
 						<div className={classes.splitForm}>
@@ -79,7 +89,13 @@ const RegisterForm = () => {
 							</div>
 						</div>
 						<label htmlFor='email'>Email</label>
-						<input type='text' onChange={handleChange} name='email' required />
+						<input
+							type='text'
+							pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'
+							onChange={handleChange}
+							name='email'
+							required
+						/>
 						<label htmlFor='password'>Password</label>
 						<input
 							type='password'
