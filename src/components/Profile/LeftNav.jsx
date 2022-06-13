@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import classes from '../Dashboard/DashboardPage.module.scss';
 
-import { FiUser, FiHome, FiLogOut } from 'react-icons/fi';
+import { FiShoppingBag, FiUser, FiHome, FiLogOut } from 'react-icons/fi';
 import { FaUserCircle } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 import { getAdresse, logout } from '../../store/authentication';
@@ -45,6 +45,16 @@ const LeftNav = () => {
 						<Link to='adresse'>
 							<FiHome />
 							<span className={classes.laptopOnly}> Adresse</span>
+						</Link>
+					</li>
+					<li
+						className={`${
+							location.pathname.split('/')[2] === 'orders' && classes.clicked
+						}`}
+					>
+						<Link to='orders'>
+							<FiShoppingBag />
+							<span className={classes.laptopOnly}>My Orders</span>
 						</Link>
 					</li>
 					<li

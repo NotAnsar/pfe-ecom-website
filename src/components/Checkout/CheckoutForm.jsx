@@ -38,7 +38,6 @@ const CheckoutForm = () => {
 	});
 
 	useEffect(() => {
-		console.log(load);
 		if (loggedIn) getAdresse();
 		async function getAdresse() {
 			try {
@@ -135,6 +134,7 @@ const CheckoutForm = () => {
 				user_id: id,
 			});
 		}
+		setload(true);
 
 		const order = { created_at, user_id: id };
 		const orderItem = cart.map((e) => ({
@@ -142,7 +142,6 @@ const CheckoutForm = () => {
 			quantity: e.qte,
 		}));
 
-		
 		async function setOrder(order) {
 			try {
 				const res = await fetch(`${url}/orders`, {
@@ -174,6 +173,7 @@ const CheckoutForm = () => {
 						const data = await orderItemsResponse.json();
 
 						if (bool) setload(false);
+
 						setOrderAdded(bool);
 					} catch (error) {
 						setload(false);
@@ -190,7 +190,7 @@ const CheckoutForm = () => {
 		}
 		setOrder(order);
 
-		setload(false);
+		// setload(false);
 	};
 
 	const handleChange = (e) => {

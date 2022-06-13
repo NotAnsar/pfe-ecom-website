@@ -11,7 +11,7 @@ const Item = ({ id, image, name, price, qte, brand, categorie }) => {
 		<div className={classes.itemContainer}>
 			<div className={classes.item}>
 				<Link to={`product/${id}`}>
-					<img src={`../images/${image}`} alt={name} />
+					<img src={`http://localhost:3000/images/${image}`} alt={name} />
 				</Link>
 
 				<div>

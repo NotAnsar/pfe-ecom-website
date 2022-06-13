@@ -8,7 +8,7 @@ export const ProfileInfo = () => {
 
 	return (
 		<div className={classes.right}>
-			<h1>Your Profile</h1>
+			<h1>My Profile</h1>
 			<div className={formClasses.container}>
 				<div className={formClasses.formC}>
 					<form>

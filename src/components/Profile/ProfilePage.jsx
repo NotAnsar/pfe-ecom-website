@@ -7,6 +7,8 @@ import classes from '../Dashboard/DashboardPage.module.scss';
 import Adresse from './Adresse';
 
 import LeftNav from './LeftNav';
+import MyOrders from './MyOrders';
+import OrderItem from './OrderItem';
 import { ProfileInfo } from './ProfileInfo';
 
 const ProfilePage = () => {
@@ -25,7 +27,9 @@ const ProfilePage = () => {
 			<Routes>
 				<Route path='' element={<ProfileInfo />} />
 				<Route path='adresse' element={<Adresse />} />
+				<Route path='orders' element={<MyOrders />} />
 
+				<Route path='orders/item/:id' element={<OrderItem />} />
 				<Route path='*' element={<Error />} />
 			</Routes>
 		</div>
