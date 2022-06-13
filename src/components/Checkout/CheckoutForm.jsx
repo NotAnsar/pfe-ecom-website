@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { Fragment } from 'react/cjs/react.production.min';
 import { clearCarts } from '../../store/cartSlice';
 import { setCheckoutDone } from '../../store/wishListSlice';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 import classes from './Form.module.scss';
 
@@ -11,10 +13,17 @@ const CheckoutForm = () => {
 	const { id, lastName, firstName, email, loggedIn } = useSelector(
 		(state) => state.auth
 	);
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const url = 'http://127.0.0.1:8000/api';
 	const [adrFound, setAdrFound] = useState(false);
+	const [adresse, setAdresse] = useState(false);
+	const [load, setload] = useState(false);
+	const [orderId, setOrderId] = useState(false);
+	const [orderAdded, setOrderAdded] = useState(false);
+	const [error, setError] = useState(false);
+	const [adresseAdded, setadresseAdded] = useState(false);
 
 	const [formData, setFormData] = useState({
 		email,
@@ -29,6 +38,7 @@ const CheckoutForm = () => {
 	});
 
 	useEffect(() => {
+		console.log(load);
 		if (loggedIn) getAdresse();
 		async function getAdresse() {
 			try {
@@ -45,11 +55,59 @@ const CheckoutForm = () => {
 				}));
 
 				setAdrFound(true);
+				setadresseAdded(true);
 			} catch (error) {
 				setAdrFound(false);
 			}
 		}
-	}, []);
+
+		if (!adrFound && adresse) addAdresse(adresse);
+		async function addAdresse(adresse) {
+			try {
+				const req = await fetch(`${url}/adresses`, {
+					method: 'POST',
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(adresse),
+				});
+
+				const res = await req.json();
+
+				if (res.Result !== 'Data has been saved') setError(true);
+				setAdresse(false);
+				setAdrFound(true);
+				setadresseAdded(true);
+			} catch (error) {
+				setError(true);
+			}
+		}
+
+		if (
+			adrFound &&
+			adresseAdded &&
+			!error &&
+			adrFound &&
+			orderId &&
+			orderAdded &&
+			adresseAdded
+		) {
+			dispatch(setCheckoutDone());
+			dispatch(clearCarts());
+			navigate('/order-confirmation', { state: { id: orderId } });
+		}
+	}, [
+		error,
+		loggedIn,
+		adresse,
+		orderId,
+		adrFound,
+		adresseAdded,
+		orderAdded,
+		adrFound,
+		load,
+	]);
 
 	const formHandler = (e) => {
 		e.preventDefault();
@@ -65,36 +123,74 @@ const CheckoutForm = () => {
 			return;
 		}
 
-		const created_at = new Date().toISOString();
+		setAdresse();
+		const created_at = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
-		const commands = cart.map((e) => ({
+		if (!adrFound) {
+			setAdresse({
+				telephone: formData.telephone,
+				adresse: formData.adresse,
+				zipCode: formData.zipCode,
+				ville: formData.ville,
+				user_id: id,
+			});
+		}
+
+		const order = { created_at, user_id: id };
+		const orderItem = cart.map((e) => ({
 			product_id: e.product_id,
-			user_id: id,
-			created_at,
 			quantity: e.qte,
 		}));
 
-		console.log(commands);
+		
+		async function setOrder(order) {
+			try {
+				const res = await fetch(`${url}/orders`, {
+					method: 'POST',
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(order),
+				});
 
-		const user = {
-			user: {
-				email: formData.email,
-				firstName: formData.firstName,
-				lastName: formData.lastName,
-				user_id: id,
-			},
-			adresse: {
-				telephone: formData.telephone,
-				adresse: formData.adresse,
-				ville: formData.ville,
-				user_id: id,
-				zipCode: formData.zipCode,
-			},
-			commands,
-		};
-		dispatch(setCheckoutDone());
-		dispatch(clearCarts());
-		navigate('/order-confirmation', { state: user });
+				if (!res.ok) throw Error('Cannot add order.');
+
+				const { id } = await res.json();
+				if (!id) setError(true);
+				setOrderId(id);
+
+				async function setOrderItems(dataa, id, bool) {
+					try {
+						let orderItemsResponse = await fetch(`${url}/order_items`, {
+							method: 'POST',
+							headers: {
+								Accept: 'application/json',
+								'Content-Type': 'application/json',
+							},
+							body: JSON.stringify({ ...dataa, order_id: id }),
+						});
+
+						const data = await orderItemsResponse.json();
+
+						if (bool) setload(false);
+						setOrderAdded(bool);
+					} catch (error) {
+						setload(false);
+						setError(true);
+					}
+				}
+				orderItem.forEach((order, i, o) => {
+					setOrderItems(order, id, i === o.length - 1);
+				});
+			} catch (error) {
+				setload(false);
+				setError(true);
+			}
+		}
+		setOrder(order);
+
+		setload(false);
 	};
 
 	const handleChange = (e) => {
@@ -105,104 +201,113 @@ const CheckoutForm = () => {
 	};
 
 	return (
-		<div className={classes.login}>
-			<div className={classes.container}>
-				<div className={classes.formC}>
-					<form id='checkoutForm' onSubmit={formHandler}>
-						<div className={classes.splitForm}>
-							<div>
-								<label htmlFor='firstName'>First Name</label>
-								<input
-									type='text'
-									onChange={handleChange}
-									name='firstName'
-									required
-									defaultValue={formData.firstName}
-									disabled
-								/>
+		<Fragment>
+			{load && (
+				<div className={classes.drop}>
+					<div className='load'>
+						<AiOutlineLoading3Quarters />
+					</div>
+				</div>
+			)}
+			<div className={classes.login}>
+				<div className={classes.container}>
+					<div className={classes.formC}>
+						<form id='checkoutForm' onSubmit={formHandler}>
+							<div className={classes.splitForm}>
+								<div>
+									<label htmlFor='firstName'>First Name</label>
+									<input
+										type='text'
+										onChange={handleChange}
+										name='firstName'
+										required
+										defaultValue={formData.firstName}
+										disabled
+									/>
+								</div>
+								<div>
+									<label htmlFor='lastName'>Last Name</label>
+									<input
+										type='text'
+										onChange={handleChange}
+										name='lastName'
+										defaultValue={formData.lastName}
+										disabled
+										required
+									/>
+								</div>
 							</div>
-							<div>
-								<label htmlFor='lastName'>Last Name</label>
-								<input
-									type='text'
-									onChange={handleChange}
-									name='lastName'
-									defaultValue={formData.lastName}
-									disabled
-									required
-								/>
+							<label htmlFor='email'>Email</label>
+							<input
+								type='email'
+								onChange={handleChange}
+								name='email'
+								required
+								defaultValue={formData.email}
+								disabled
+							/>
+							<label htmlFor='telephone'>Mobile Telephone</label>
+							<input
+								type='tel'
+								onChange={handleChange}
+								name='telephone'
+								maxLength='10'
+								minLength='10'
+								defaultValue={formData.telephone}
+								required
+								disabled={adrFound ? 'disabled' : ''}
+							/>
+							<label htmlFor='adresse'>Adresse</label>
+							<input
+								type='text'
+								onChange={handleChange}
+								defaultValue={formData.adresse}
+								name='adresse'
+								minLength='6'
+								required
+								disabled={adrFound ? 'disabled' : ''}
+							/>
+							<div className={classes.splitForm}>
+								<div>
+									<label htmlFor='ville'>City</label>
+									<input
+										type='text'
+										onChange={handleChange}
+										defaultValue={formData.ville}
+										name='ville'
+										minLength='3'
+										required
+										disabled={adrFound ? 'disabled' : ''}
+									/>
+								</div>
+								<div>
+									<label htmlFor='zipCode'>Zip Code</label>
+									<input
+										type='number'
+										onChange={handleChange}
+										defaultValue={formData.zipCode}
+										name='zipCode'
+										minLength='3'
+										required
+										disabled={adrFound ? 'disabled' : ''}
+									/>
+								</div>
 							</div>
-						</div>
-						<label htmlFor='email'>Email</label>
-						<input
-							type='email'
-							onChange={handleChange}
-							name='email'
-							required
-							defaultValue={formData.email}
-							disabled
-						/>
-						<label htmlFor='telephone'>Mobile Telephone</label>
-						<input
-							type='tel'
-							onChange={handleChange}
-							name='telephone'
-							maxLength='10'
-							minLength='10'
-							defaultValue={formData.telephone}
-							required
-							disabled={adrFound ? 'disabled' : ''}
-						/>
-						<label htmlFor='adresse'>Adresse</label>
-						<input
-							type='text'
-							onChange={handleChange}
-							defaultValue={formData.adresse}
-							name='adresse'
-							minLength='6'
-							required
-							disabled={adrFound ? 'disabled' : ''}
-						/>
-						<div className={classes.splitForm}>
-							<div>
-								<label htmlFor='ville'>City</label>
-								<input
-									type='text'
-									onChange={handleChange}
-									defaultValue={formData.ville}
-									name='ville'
-									minLength='3'
-									required
-									disabled={adrFound ? 'disabled' : ''}
-								/>
-							</div>
-							<div>
-								<label htmlFor='zipCode'>Zip Code</label>
-								<input
-									type='number'
-									onChange={handleChange}
-									defaultValue={formData.zipCode}
-									name='zipCode'
-									minLength='3'
-									required
-									disabled={adrFound ? 'disabled' : ''}
-								/>
-							</div>
-						</div>
 
-						<label htmlFor='country'>Country</label>
-						<input
-							type='text'
-							onChange={handleChange}
-							name='country'
-							defaultValue='Morocco'
-							disabled
-							required
-						/>
-					</form>
+							<label htmlFor='country'>Country</label>
+							<input
+								type='text'
+								onChange={handleChange}
+								name='country'
+								defaultValue='Morocco'
+								disabled
+								required
+							/>
+						</form>
+					</div>
 				</div>
 			</div>
-		</div>
+		</Fragment>
 	);
 };
 

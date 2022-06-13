@@ -5,7 +5,6 @@ import { FiCheck } from 'react-icons/fi';
 
 export const OrderConfirmPage = () => {
 	const location = useLocation();
-	const userData = location.state;
 
 	const today = new Date();
 	const options = { weekday: 'long', month: 'long', day: 'numeric' };
@@ -28,8 +27,9 @@ export const OrderConfirmPage = () => {
 			<div className={classes.thanking}>
 				<h3>THANK YOU FOR YOUR ORDER</h3>
 				<p>
-					Thanks for purchasing from our website .The order with id {5} has Been
-					created successfully .You will soon receive Your Order Between
+					Thanks for purchasing from our website .The order with id{' '}
+					{location.state.id} has Been created successfully .You will soon
+					receive Your Order Between
 					{` ${from} `}And {` ${to} `}. You will be able to pay for your order
 					once it arrives to the selected Adresse.
 				</p>

@@ -1,68 +1,94 @@
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.drop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	// display: none;
+	z-index: 999;
+	background-color: rgba(0, 0, 0, 0.3);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+	.load {
+		color: #000;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		width: 100%;
+		z-index: 1000;
+	}
 }
 
 .formC {
-  margin: 0 auto;
-  width: 100%;
+	margin: 0 auto;
+	width: 100%;
 
-  form {
-    label {
-      display: inline-block;
-      font-size: 16px;
-      font-weight: 400;
-      margin: 25px 0 10px;
-    }
-    input {
-      box-sizing: border-box;
-      border: 1px solid #dae1e7;
-      border-radius: 2px;
-      color: var(--title-font-color);
-      font-size: inherit;
-      font-family: inherit;
-      height: 40px;
-      outline: none;
-      padding: 8px 12px;
-      transition: all 0.3s;
-      width: 100%;
-      &:focus {
-        border: 1px solid #000;
-        box-shadow: 0 0 0 3px rgb(0 0 0 / 25%);
-      }
-    }
+	form {
+		label {
+			display: inline-block;
+			font-size: 16px;
+			font-weight: 400;
+			margin: 25px 0 10px;
+		}
+		input {
+			box-sizing: border-box;
+			border: 1px solid #dae1e7;
+			border-radius: 2px;
+			color: var(--title-font-color);
+			font-size: inherit;
+			font-family: inherit;
+			height: 40px;
+			outline: none;
+			padding: 8px 12px;
+			transition: all 0.3s;
+			width: 100%;
+			&:focus {
+				border: 1px solid #000;
+				box-shadow: 0 0 0 3px rgb(0 0 0 / 25%);
+			}
+		}
 
-    input[type='submit'] {
-      background-color: #000;
-      color: #fff;
-      font-weight: 400;
-      height: 50px;
-      margin-top: 3rem;
-      margin-bottom: 0.5rem;
-      cursor: pointer;
-      &:hover {
-        opacity: 0.85;
-      }
-    }
-  }
+		input[type='submit'] {
+			background-color: #000;
+			color: #fff;
+			font-weight: 400;
+			height: 50px;
+			margin-top: 3rem;
+			margin-bottom: 0.5rem;
+			cursor: pointer;
+			&:hover {
+				opacity: 0.85;
+			}
+		}
+	}
 }
 
 .newUser {
-  text-align: center;
-  margin-top: 0.5rem;
-  a {
-    cursor: pointer;
-    color: #000;
-    font-size: 15px;
-    font-weight: 500;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+	text-align: center;
+	margin-top: 0.5rem;
+	a {
+		cursor: pointer;
+		color: #000;
+		font-size: 15px;
+		font-weight: 500;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
 }
 
 .splitForm {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr 1fr;
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: 1fr 1fr;
 }

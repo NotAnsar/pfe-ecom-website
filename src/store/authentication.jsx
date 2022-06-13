@@ -130,6 +130,7 @@ export const authSlice = createSlice({
 				state.loggedIn = action.payload.loggedIn;
 				state.errorMsg = action.payload.errorMsg;
 			} else {
+				console.log(action.payload);
 				state.error = action.payload.error;
 				state.loggedIn = action.payload.loggedIn;
 				state.id = action.payload.id;
