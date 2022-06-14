@@ -106,30 +106,37 @@
 		font-size: 1.75rem;
 		margin: 1rem 0;
 	}
-	.card {
+	.card,
+	.card2 {
 		display: grid;
 		align-items: center;
 		gap: 1rem;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
+		margin-bottom: 2rem;
+	}
+	.card2 {
+		grid-template-columns: 1fr 1.5fr 1.5fr;
 	}
 	li {
 		padding: 0.5rem;
 		border-radius: 5px;
 		background-color: #fff;
-		display: flex;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		justify-content: center;
+		text-align: center;
 		align-items: center;
-		gap: 1rem;
+		gap: 0.5rem;
 		p {
-			color: rgb(150, 150, 150);
+			color: rgb(102, 102, 102);
 		}
 		h6 {
-			margin-top: 0.35rem;
 			font-weight: 500;
 			font-size: 1rem;
 		}
 		svg {
-			background-color: black;
-			color: #fff;
+			// background-color: black;
+			// color: #fff;
 			padding: 0.5rem;
 			border-radius: 3px;
 			height: 2rem;
@@ -137,6 +144,15 @@
 		}
 	}
 }
+
+.lastOrders {
+	h2 {
+		font-weight: 600;
+		font-size: 1.5rem;
+		margin: 1rem 0;
+	}
+}
+
 .dashtitle {
 	display: flex;
 	align-items: center;
@@ -152,6 +168,7 @@
 		border-radius: 3px;
 	}
 }
+
 .table {
 	width: 100%;
 	margin-bottom: 1rem;
@@ -280,7 +297,8 @@
 
 .orderContainer {
 	margin-top: 1.5rem;
-	.ordersHeader {
+	.ordersHeader,
+	.lastordersHeader {
 		margin: 0.5rem;
 		padding: 0.5rem;
 
@@ -302,7 +320,9 @@
 			justify-content: center;
 		}
 	}
-	.ordersItem {
+
+	.ordersItem,
+	.lastordersItem {
 		display: grid;
 		grid-template-columns: 0.25fr 1fr 1fr 0.25fr 0.5fr;
 		align-items: center;
@@ -322,5 +342,11 @@
 			justify-content: center;
 			font-size: 0.9rem;
 		}
+	}
+	.lastordersHeader {
+		grid-template-columns: 0.25fr 1.25fr 0.5fr 1fr;
+	}
+	.lastordersItem {
+		grid-template-columns: 0.25fr 1.25fr 0.5fr 1fr;
 	}
 }

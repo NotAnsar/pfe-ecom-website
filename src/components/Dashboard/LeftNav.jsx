@@ -5,7 +5,6 @@ import classes from './DashboardPage.module.scss';
 import {
 	FiGrid,
 	FiUser,
-	FiUsers,
 	FiList,
 	FiPackage,
 	FiLogOut,
@@ -21,7 +20,6 @@ const LeftNav = () => {
 	const dispatch = useDispatch();
 
 	const { lastName, firstName } = useSelector((state) => state.auth);
-	const auth = useSelector((state) => state.auth);
 
 	return (
 		<nav className={classes.nav}>
