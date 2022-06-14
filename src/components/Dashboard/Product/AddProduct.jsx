@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import classes from '../DashboardPage.module.scss';
 import formClasses from '../../Forms/Form.module.scss';
 import { useSelector } from 'react-redux';
-
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 const AddProduct = () => {
 	const { brands, categories } = useSelector((state) => state.products);
 	const [formData, setFormData] = useState({

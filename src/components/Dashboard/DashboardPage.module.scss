@@ -277,3 +277,50 @@
 		font-size: 18px;
 	}
 }
+
+.orderContainer {
+	margin-top: 1.5rem;
+	.ordersHeader {
+		margin: 0.5rem;
+		padding: 0.5rem;
+
+		display: grid;
+		grid-template-columns: 0.25fr 1fr 1fr 0.25fr 0.5fr;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 1.5rem;
+
+		h3 {
+			font-weight: 500;
+			color: rgb(32, 32, 32);
+		}
+		div {
+			padding: 0.5rem;
+
+			display: grid;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+	.ordersItem {
+		display: grid;
+		grid-template-columns: 0.25fr 1fr 1fr 0.25fr 0.5fr;
+		align-items: center;
+		gap: 1rem;
+		margin: 0.5rem;
+		font-size: 0.9rem;
+		background-color: #fff;
+		padding: 0.5rem;
+		border-radius: 5px;
+		h3 {
+			font-weight: 400;
+			color: rgb(56, 56, 56);
+		}
+		a {
+			display: grid;
+			align-items: center;
+			justify-content: center;
+			font-size: 0.9rem;
+		}
+	}
+}

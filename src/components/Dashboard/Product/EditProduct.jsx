@@ -4,6 +4,7 @@ import classes from '../DashboardPage.module.scss';
 import formClasses from '../../Forms/Form.module.scss';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 const EditProduct = () => {
 	const { products, brands, categories } = useSelector(

@@ -33,7 +33,7 @@ const EditCategorie = () => {
 				<div className={formClasses.formC}>
 					<form id='checkoutForm' onSubmit={formHandler}>
 						<div>
-							<label htmlFor='name'>Brand Name</label>
+							<label htmlFor='name'>Categorie Name</label>
 							<input
 								ref={categorie}
 								defaultValue={data.categorie}

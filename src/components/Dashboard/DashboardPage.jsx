@@ -20,6 +20,8 @@ import EditCategorie from './Categorie/EditCategorie';
 import Users from './User/Users';
 import AddUser from './User/AddUser';
 import EditUser from './User/EditUser';
+import Orders from './Orders/Orders';
+import OrderDetail from './Orders/OrderDetail';
 
 const DashboardPage = () => {
 	const { loggedIn, role } = useSelector((state) => state.auth);
@@ -51,6 +53,9 @@ const DashboardPage = () => {
 				<Route path='products' element={<Products />} />
 				<Route path='products/edit/:id' element={<EditProduct />} />
 				<Route path='products/add' element={<AddProduct />} />
+
+				<Route path='orders' element={<Orders />} />
+				<Route path='orders/item/:id' element={<OrderDetail />} />
 
 				<Route path='*' element={<Error />} />
 			</Routes>

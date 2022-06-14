@@ -9,6 +9,7 @@ import {
 	FiList,
 	FiPackage,
 	FiLogOut,
+	FiShoppingBag,
 } from 'react-icons/fi';
 import { FaUserCircle } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
@@ -52,6 +53,16 @@ const LeftNav = () => {
 						<Link to='users'>
 							<FiUser />
 							<span className={classes.laptopOnly}> Users</span>
+						</Link>
+					</li>
+					<li
+						className={`${
+							location.pathname.split('/')[2] === 'orders' && classes.clicked
+						}`}
+					>
+						<Link to='orders'>
+							<FiShoppingBag />
+							<span className={classes.laptopOnly}>Orders</span>
 						</Link>
 					</li>
 					<li

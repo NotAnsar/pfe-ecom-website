@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import classes from '../DashboardPage.module.scss';
 import { FiTrash2, FiEdit } from 'react-icons/fi';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 const Products = () => {
 	const { products } = useSelector((state) => state.products);
@@ -33,8 +34,11 @@ const Products = () => {
 				</thead>
 				<tbody>
 					{!products.length === 0 && (
-						<div className='loading'>
-							<img src='./images/loading.gif' />
+						<div className={classes.right}>
+							<div className='load'>
+								{/* <FiLoader /> */}
+								<AiOutlineLoading3Quarters />
+							</div>
 						</div>
 					)}
 					{products &&
