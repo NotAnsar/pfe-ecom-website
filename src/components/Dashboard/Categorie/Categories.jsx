@@ -1,13 +1,40 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import classes from '../DashboardPage.module.scss';
 import { FiEdit } from 'react-icons/fi';
+import url from '../../../store/url';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 const Categories = () => {
-	const { categories } = useSelector((state) => state.products);
-	console.log(categories);
+	const [categories, setCategories] = useState(null);
+
+	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+
+		async function getCategories() {
+			try {
+				const res = await fetch(`${url}/categories`);
+
+				const prd = await res.json();
+				setCategories(prd);
+			} catch (error) {}
+		}
+		getCategories();
+	}, []);
+
+	if (categories === null)
+		return (
+			<div className={classes.right}>
+				<div className='load'>
+					{/* <FiLoader /> */}
+					<AiOutlineLoading3Quarters />
+				</div>
+			</div>
+		);
 
 	return (
 		<div className={classes.right}>
@@ -25,12 +52,8 @@ const Categories = () => {
 						</th>
 					</tr>
 				</thead>
+
 				<tbody>
-					{!categories.length === 0 && (
-						<div className='loading'>
-							<img src='./images/loading.gif' />
-						</div>
-					)}
 					{categories &&
 						categories.map((b) => {
 							return (
