@@ -47,7 +47,10 @@ const Products = () => {
 								<tr key={p.product_id}>
 									<td>{p.product_id}</td>
 									<td>
-										<img src={`../images/${p.image}`} alt={p.name} />
+										<img
+											src={`http://localhost:3000/images/${p.image}`}
+											alt={p.name}
+										/>
 									</td>
 									<td>{p.name}</td>
 									<td>{p.brand_id}</td>

@@ -49,7 +49,11 @@ const ProductPage = ({ data }) => {
 		<div className={classes.container}>
 			<div className={classes.grid}>
 				<div className={classes.img}>
-					<img src={`../../../images/${data.image}`} alt={data.name} />
+					<img
+						src={`http://localhost:3000/images/${data.image}`}
+						// src={`../../../images/${data.image}`}
+						alt={data.name}
+					/>
 				</div>
 				<div className={classes.details}>
 					<div className={classes.titleContainer}>

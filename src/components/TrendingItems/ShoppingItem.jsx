@@ -8,7 +8,7 @@ const ShoppingItem = ({ image, name, price, id }) => {
 		<Link to={`/product/${id}`} className={classes.itm}>
 			<div className={classes.rowgrid}>
 				<div className={classes.img}>
-					<img src={`../images/${image}`} alt={name} />
+					<img src={`http://localhost:3000/images/${image}`} alt={name} />
 				</div>
 				<div>
 					<h2>{name}</h2>

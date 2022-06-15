@@ -36,7 +36,7 @@ const Orders = () => {
 						<FiArrowRight />
 					</div>
 				</div>
-				{orders.map((o) => (
+				{[...orders].reverse().map((o) => (
 					<div key={o.order_id} className={classes.ordersItem}>
 						<h3>{o.order_id}</h3>
 						<h3>

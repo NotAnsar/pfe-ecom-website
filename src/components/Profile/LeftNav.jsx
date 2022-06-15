@@ -19,7 +19,6 @@ const LeftNav = () => {
 			<div className={classes.wrapper}>
 				<ul className={classes.ul}>
 					<li className={classes.profile}>
-						{/* <img src='' alt='' /> */}
 						<FaUserCircle />
 
 						<p className={classes.laptopOnly}>{`${

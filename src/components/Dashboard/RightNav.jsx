@@ -121,12 +121,12 @@ export const RightNav = () => {
 					<li>
 						<FiDollarSign />
 						<p>Total Earning</p>
-						<h6>{calculateTotal()}$</h6>
+						<h6>{calculateTotal().toFixed(2)}$</h6>
 					</li>
 				</ul>
 			</div>
 			<div className={classes.lastOrders}>
-				<h2>Last 3 Orders</h2>
+				<h2>Last Orders</h2>
 				<div className={classes.orderContainer}>
 					<div className={classes.lastordersHeader}>
 						<h3>#</h3>
