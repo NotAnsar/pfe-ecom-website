@@ -28,31 +28,37 @@ const MyOrders = () => {
 		<div className={classes.right}>
 			<h1>My Orders</h1>
 			<div className={classes.orderContainer}>
-				<div className={classes.orderHeader}>
-					<h3>Order Id</h3>
-					<h3>Date purchased</h3>
-					<div>
-						<FiArrowRight />
-					</div>
-				</div>
-				{orders.map((o) => (
-					<div key={o.order_id} className={classes.orderItem}>
-						<h3>{o.order_id}</h3>
-						<h3>
-							{new Intl.DateTimeFormat('en-GB', {
-								weekday: 'long',
-								month: 'long',
-								day: 'numeric',
-								hour: '2-digit',
-								minute: '2-digit',
-								second: '2-digit',
-							}).format(new Date(o.created_at))}
-						</h3>
-						<Link to={`./item/${o.order_id}`}>
+				{orders.length === 0 && <p>You have No orders</p>}
+
+				{orders.length !== 0 && (
+					<div className={classes.orderHeader}>
+						<h3>Order Id</h3>
+						<h3>Date purchased</h3>
+						<div>
 							<FiArrowRight />
-						</Link>
+						</div>
 					</div>
-				))}
+				)}
+
+				{orders.length !== 0 &&
+					[...orders].reverse().map((o) => (
+						<div key={o.order_id} className={classes.orderItem}>
+							<h3>{o.order_id}</h3>
+							<h3>
+								{new Intl.DateTimeFormat('en-GB', {
+									weekday: 'long',
+									month: 'long',
+									day: 'numeric',
+									hour: '2-digit',
+									minute: '2-digit',
+									second: '2-digit',
+								}).format(new Date(o.created_at))}
+							</h3>
+							<Link to={`./item/${o.order_id}`}>
+								<FiArrowRight />
+							</Link>
+						</div>
+					))}
 			</div>
 		</div>
 	);

@@ -78,6 +78,7 @@ const ShopAll = () => {
 				const res = await fetch(url);
 
 				const prd = await res.json();
+				console.log(prd);
 				setPageNum(prd.last_page);
 				setProducts(prd.data);
 			} catch (error) {

@@ -14,6 +14,7 @@ import { FaUserCircle } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 import { logout } from '../../store/authentication';
 import { useDispatch, useSelector } from 'react-redux';
+import { clearCarts } from '../../store/cartSlice';
 
 const LeftNav = () => {
 	const location = useLocation();
@@ -93,7 +94,13 @@ const LeftNav = () => {
 							<span className={classes.laptopOnly}> Products</span>
 						</Link>
 					</li>
-					<li className={classes.logout} onClick={() => dispatch(logout())}>
+					<li
+						className={classes.logout}
+						onClick={() => {
+							dispatch(logout());
+							dispatch(clearCarts());
+						}}
+					>
 						<Link to=''>
 							<FiLogOut />
 							<span className={classes.laptopOnly}> LogOut</span>

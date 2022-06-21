@@ -16,8 +16,6 @@ export const OrderConfirmPage = () => {
 		new Date(today.setDate(today.getDate() + 5))
 	);
 
-	// clear cart
-	// Button to go back to home page
 	return (
 		<div className={classes.container}>
 			<div className={classes.check}>

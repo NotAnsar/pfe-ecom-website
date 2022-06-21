@@ -75,7 +75,7 @@ const OrderItem = () => {
 			</div>
 			<div className={classes.total}>
 				<h1>Total</h1>
-				<p>${calculateTotal()}</p>
+				<p>${calculateTotal().toFixed(2)}</p>
 			</div>
 		</div>
 	);

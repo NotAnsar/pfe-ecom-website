@@ -45,22 +45,27 @@ const EditUser = () => {
 			role: users.role,
 			user_id: id,
 		};
-
+		console.log(user);
 		async function update() {
-			const req = await fetch(`${url}/users`, {
-				method: 'PUT',
-				headers: {
-					Accept: 'application/json',
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(user),
-			});
+			try {
+				const req = await fetch(`${url}/users`, {
+					method: 'PUT',
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(user),
+				});
 
-			const res = await req.json();
+				const res = await req.json();
+				console.log(res);
+				alert(res.result);
 
-			alert(res.result);
-
-			navigate('/dashboard/users');
+				navigate('/dashboard/users');
+			} catch (error) {
+				console.log(error);
+				alert('This email already exist');
+			}
 		}
 		update();
 	};
